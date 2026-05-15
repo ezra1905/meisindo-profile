@@ -39,6 +39,32 @@ const wineData: Record<
     ],
   },
 
+  "south-africa": {
+  title: "South African Wine Collection",
+  description:
+    "Explore expressive South African wines from coastal vineyards and historic wine regions.",
+  wines: [
+    {
+      name: "Chenin Blanc",
+      image: "/wines/chenin-blanc.jpg",
+      description:
+        "Fresh and vibrant white wine with citrus, apple, and mineral notes.",
+    },
+    {
+      name: "Pinotage",
+      image: "/wines/pinotage.jpg",
+      description:
+        "South Africa’s signature red wine with dark fruit, spice, and smoky character.",
+    },
+    {
+      name: "Sauvignon Blanc",
+      image: "/wines/south-africa-sauvignon-blanc.jpg",
+      description:
+        "Crisp coastal white wine with tropical fruit and refreshing acidity.",
+    },
+  ],
+},
+
   italy: {
     title: "Italian Wine Collection",
     description:
