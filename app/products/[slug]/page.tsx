@@ -205,11 +205,11 @@ export default async function ProductPage({
           </p>
         </div>
 
-        <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-3 place-items-center">
+        <div className="mx-auto flex max-w-6xl flex-wrap justify-center gap-8">
           {product.wines.map((wine) => (
             <div
               key={wine.name}
-              className="group w-full max-w-[380px] overflow-hidden rounded-3xl border-white/10 bg-white/5 transition duration-500 hover:-translate-y-2 hover:border-[#c9a86a]/60 hover:shadow-[0_0_40px_rgba(201,168,106,0.2)]"
+              className="group w-full max-w-[380px] flex-1 sm:flex-none overflow-hidden rounded-3xl border-white/10 bg-white/5 transition duration-500 hover:-translate-y-2 hover:border-[#c9a86a]/60 hover:shadow-[0_0_40px_rgba(201,168,106,0.2)]"
             >
               <div className="relative h-[420px] overflow-hidden">
                 <Image
