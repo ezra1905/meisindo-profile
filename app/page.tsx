@@ -88,7 +88,7 @@ function CountryFlag({ variant }: { variant: string }) {
       </div>
     );
   }
-
+/*
   if (variant === "south-africa") {
     return (
       <div className="relative h-10 w-14 overflow-hidden rounded-md border border-[#c9a86a]/25 bg-[#263126] shadow-inner">
@@ -99,7 +99,7 @@ function CountryFlag({ variant }: { variant: string }) {
       </div>
     );
   }
-
+*/
   if (variant === "australia") {
     return (
       <div className="relative h-10 w-14 overflow-hidden rounded-md border border-[#c9a86a]/25 bg-[#1c2634] shadow-inner">
@@ -115,7 +115,7 @@ function CountryFlag({ variant }: { variant: string }) {
       </div>
     );
   }
-
+/*
   if (variant === "spain") {
     return (
       <div className="flex h-10 w-14 flex-col overflow-hidden rounded-md border border-[#c9a86a]/25 shadow-inner">
@@ -125,7 +125,7 @@ function CountryFlag({ variant }: { variant: string }) {
       </div>
     );
   }
-
+*/
   return (
     <div className="relative h-10 w-14 overflow-hidden rounded-md border border-[#c9a86a]/25 bg-[#1c2634] shadow-inner">
       <div className="absolute left-0 top-0 h-5 w-7 bg-[#070707]">
