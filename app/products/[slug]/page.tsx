@@ -139,7 +139,7 @@ export default async function ProductPage({
     <main className="min-h-screen bg-[#070707] px-5 py-24 text-white sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <Link
-          href="/"
+          href="/#products"
           className="mb-12 inline-flex text-sm uppercase tracking-[0.25em] text-[#c9a86a]"
         >
           ← Back to Home
