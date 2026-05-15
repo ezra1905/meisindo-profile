@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import {
@@ -51,7 +52,8 @@ const products = [
     country: "Spain",
     flag: "spain",
     region: "Expresion, Sandara, Hoya de Cadenas",
-    highlight: "Rich reds, elegant tempranillo, and expressive Mediterranean styles.",
+    highlight:
+      "Rich reds, elegant tempranillo, and expressive Mediterranean styles.",
   },
 ];
 
@@ -99,30 +101,30 @@ function CountryFlag({ variant }: { variant: string }) {
   }
 
   if (variant === "australia") {
-  return (
-    <div className="relative h-10 w-14 overflow-hidden rounded-md border border-[#c9a86a]/25 bg-[#1c2634] shadow-inner">
-      <div className="absolute left-0 top-0 h-5 w-7 bg-[#070707]">
-        <span className="absolute left-0 top-[8px] h-[3px] w-7 bg-[#f4ead3]" />
-        <span className="absolute left-[12px] top-0 h-5 w-[3px] bg-[#f4ead3]" />
-        <span className="absolute left-0 top-[9px] h-px w-7 bg-[#c9a86a]" />
-        <span className="absolute left-[13px] top-0 h-5 w-px bg-[#c9a86a]" />
+    return (
+      <div className="relative h-10 w-14 overflow-hidden rounded-md border border-[#c9a86a]/25 bg-[#1c2634] shadow-inner">
+        <div className="absolute left-0 top-0 h-5 w-7 bg-[#070707]">
+          <span className="absolute left-0 top-[8px] h-[3px] w-7 bg-[#f4ead3]" />
+          <span className="absolute left-[12px] top-0 h-5 w-[3px] bg-[#f4ead3]" />
+          <span className="absolute left-0 top-[9px] h-px w-7 bg-[#c9a86a]" />
+          <span className="absolute left-[13px] top-0 h-5 w-px bg-[#c9a86a]" />
+        </div>
+        <span className="absolute right-3 top-2 h-1.5 w-1.5 rounded-full bg-[#c9a86a] shadow-[0_0_8px_rgba(201,168,106,0.8)]" />
+        <span className="absolute right-6 top-6 h-1 w-1 rounded-full bg-[#f4ead3]" />
+        <span className="absolute bottom-2 right-3 h-1 w-1 rounded-full bg-[#c9a86a]" />
       </div>
-      <span className="absolute right-3 top-2 h-1.5 w-1.5 rounded-full bg-[#c9a86a] shadow-[0_0_8px_rgba(201,168,106,0.8)]" />
-      <span className="absolute right-6 top-6 h-1 w-1 rounded-full bg-[#f4ead3]" />
-      <span className="absolute bottom-2 right-3 h-1 w-1 rounded-full bg-[#c9a86a]" />
-    </div>
-  );
-}
+    );
+  }
 
-if (variant === "spain") {
-  return (
-    <div className="flex h-10 w-14 flex-col overflow-hidden rounded-md border border-[#c9a86a]/25 shadow-inner">
-      <span className="h-1/4 bg-[#7d2f2f]" />
-      <span className="h-1/2 bg-[#c9a86a]" />
-      <span className="h-1/4 bg-[#7d2f2f]" />
-    </div>
-  );
-}
+  if (variant === "spain") {
+    return (
+      <div className="flex h-10 w-14 flex-col overflow-hidden rounded-md border border-[#c9a86a]/25 shadow-inner">
+        <span className="h-1/4 bg-[#7d2f2f]" />
+        <span className="h-1/2 bg-[#c9a86a]" />
+        <span className="h-1/4 bg-[#7d2f2f]" />
+      </div>
+    );
+  }
 
   return (
     <div className="relative h-10 w-14 overflow-hidden rounded-md border border-[#c9a86a]/25 bg-[#1c2634] shadow-inner">
@@ -361,37 +363,41 @@ export default function Home() {
           >
             <div className="product-carousel-track flex gap-6">
               {productCarousel.map((item, index) => (
-                <motion.div
+                <Link
+                  href={`/products/${item.flag}`}
                   key={`${item.country}-${index}`}
-                  initial={{ opacity: 0, y: 60 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: (index % products.length) * 0.1 }}
-                  className="group relative min-h-[280px] w-[16rem] shrink-0 sm:w-[20rem] lg:w-[24rem] overflow-hidden rounded-3xl border border-white/10 bg-black/35 p-8 shadow-[0_0_0_rgba(201,168,106,0)] backdrop-blur-xl transition duration-500 hover:-translate-y-2 hover:border-[#c9a86a]/70 hover:bg-white/[0.08] hover:shadow-[0_0_42px_rgba(201,168,106,0.28)] sm:w-[22rem] lg:w-[24rem]"
                 >
-                  <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-[#c9a86a]/70 to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
-                  <div className="absolute right-6 top-6 rounded-full border border-[#c9a86a]/20 px-4 py-1 text-xs uppercase tracking-[0.28em] text-[#c9a86a]/80">
-                    Country
-                  </div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 60 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: (index % products.length) * 0.1 }}
+                    className="group relative min-h-[280px] w-[16rem] shrink-0 sm:w-[20rem] lg:w-[24rem] overflow-hidden rounded-3xl border border-white/10 bg-black/35 p-8 shadow-[0_0_0_rgba(201,168,106,0)] backdrop-blur-xl transition duration-500 hover:-translate-y-2 hover:border-[#c9a86a]/70 hover:bg-white/[0.08] hover:shadow-[0_0_42px_rgba(201,168,106,0.28)] sm:w-[22rem] lg:w-[24rem]"
+                  >
+                    <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-[#c9a86a]/70 to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
+                    <div className="absolute right-6 top-6 rounded-full border border-[#c9a86a]/20 px-4 py-1 text-xs uppercase tracking-[0.28em] text-[#c9a86a]/80">
+                      Country
+                    </div>
 
-                  <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#c9a86a]/10 transition duration-500 group-hover:bg-[#c9a86a]/20 group-hover:shadow-[0_0_28px_rgba(201,168,106,0.3)]">
-                    <CountryFlag variant={item.flag} />
-                  </div>
+                    <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#c9a86a]/10 transition duration-500 group-hover:bg-[#c9a86a]/20 group-hover:shadow-[0_0_28px_rgba(201,168,106,0.3)]">
+                      <CountryFlag variant={item.flag} />
+                    </div>
 
-                  <h3 className="mb-3 text-3xl font-semibold">
-                    {item.country}
-                  </h3>
-                  <p className="mb-5 text-sm uppercase tracking-[0.22em] text-white/45">
-                    {item.region}
-                  </p>
-                  <p className="mb-8 leading-7 text-white/60">
-                    {item.highlight}
-                  </p>
+                    <h3 className="mb-3 text-3xl font-semibold">
+                      {item.country}
+                    </h3>
+                    <p className="mb-5 text-sm uppercase tracking-[0.22em] text-white/45">
+                      {item.region}
+                    </p>
+                    <p className="mb-8 leading-7 text-white/60">
+                      {item.highlight}
+                    </p>
 
-                  <button className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#c9a86a] transition group-hover:gap-3">
-                    Explore
-                    <ChevronRight size={18} />
-                  </button>
-                </motion.div>
+                    <button className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#c9a86a] transition group-hover:gap-3">
+                      Explore
+                      <ChevronRight size={18} />
+                    </button>
+                  </motion.div>
+                </Link>
               ))}
             </div>
           </div>
