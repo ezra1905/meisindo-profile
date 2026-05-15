@@ -227,12 +227,17 @@ export default function Home() {
 
       {/* Hero */}
       <section className="relative flex min-h-screen w-full max-w-full items-center justify-center overflow-hidden px-6">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-60"
-          style={{
-            backgroundImage: "url('/Hero.png')",
-          }}
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          src="/hero-video.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
         />
+
+        <div className="absolute inset-0 bg-black/45" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/70" />
 
         <div className="absolute inset-0 bg-black/40" />
 
