@@ -283,9 +283,15 @@ export default function Home() {
       </section>
 
       {/* About */}
+      <div className="relative h-40 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#1b0b0b]/80 to-[#070707]" />
+
+        <div className="absolute left-1/2 top-1/2 h-40 w-[700px] -translate-x-1/2 rounded-full bg-[#5c1d12]/20 blur-[120px]" />
+      </div>
+
       <section
         id="about"
-        className="relative border-t border-white/10 px-5 py-20 sm:px-6 sm:py-28 lg:py-32"
+        className="relative px-5 py-20 sm:px-6 sm:py-28 lg:py-32"
       >
         <div className="mx-auto grid max-w-7xl gap-16 md:grid-cols-2">
           <motion.div
@@ -297,7 +303,7 @@ export default function Home() {
               About Us
             </p>
 
-            <h2 className="mb-8 text-5xl font-bold leading-tight">
+            <h2 className="font-cinzel mb-8 text-4xl font-bold leading-tight sm:text-5xl md:text-6xl">
               Elegant Distribution
               <br />
               For Premium Wine
@@ -311,25 +317,37 @@ export default function Home() {
           </motion.div>
 
           <div className="grid gap-6">
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl transition duration-500 hover:border-[#c9a86a]/40 hover:bg-white/[0.08] hover:shadow-[0_0_40px_rgba(201,168,106,0.15)]"
+            >
               <Wine className="mb-5 text-[#c9a86a]" size={40} />
+
               <h3 className="mb-3 text-2xl font-semibold">Premium Selection</h3>
 
               <p className="text-white/60">
                 Curated premium wine selections tailored for hospitality and
                 lifestyle industries.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl transition duration-500 hover:border-[#c9a86a]/40 hover:bg-white/[0.08] hover:shadow-[0_0_40px_rgba(201,168,106,0.15)]"
+            >
               <Users className="mb-5 text-[#c9a86a]" size={40} />
+
               <h3 className="mb-3 text-2xl font-semibold">Trusted Clients</h3>
 
               <p className="text-white/60">
                 Trusted by dozens of hospitality, restaurant, and retail
                 partners.
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
