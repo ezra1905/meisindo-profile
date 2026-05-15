@@ -38,7 +38,7 @@ const wineData: Record<
       },
     ],
   },
-
+/*
   "south-africa": {
   title: "South African Wine Collection",
   description:
@@ -64,6 +64,7 @@ const wineData: Record<
     },
   ],
 },
+*/
 
 "new-zealand": {
   title: "New Zealand Wine Collection",
@@ -136,7 +137,7 @@ const wineData: Record<
       },
     ],
   },
-
+/*
   spain: {
     title: "Spanish Wine Collection",
     description:
@@ -162,6 +163,7 @@ const wineData: Record<
       },
     ],
   },
+  */
 };
 
 export default async function ProductPage({
