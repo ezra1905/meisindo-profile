@@ -134,12 +134,6 @@ const wineData: Record<
         description:
           "Structured wine with elegant tannins and oak finish.",
       },
-      {
-        name: "Chardonnay",
-        image: "/wines/australia-chardonnay.jpg",
-        description:
-          "Modern Australian white wine with tropical character.",
-      },
     ],
   },
 
