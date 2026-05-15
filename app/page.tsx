@@ -40,6 +40,19 @@ const products = [
     region: "Tuscany, Veneto & Piedmont",
     highlight: "Elegant old-world bottles with food-friendly depth.",
   },
+
+  {
+    country: "Australia",
+    flag: "australia",
+    region: "Welland, Margaret River & Yarra Valley",
+    highlight: "Bold shiraz, refined cabernet, and vibrant coastal whites.",
+  },
+  {
+    country: "Spain",
+    flag: "spain",
+    region: "Expresion, Sandara, Hoya de Cadenas",
+    highlight: "Rich reds, elegant tempranillo, and expressive Mediterranean styles.",
+  },
 ];
 
 const productCarousel = [...products, ...products];
@@ -84,6 +97,32 @@ function CountryFlag({ variant }: { variant: string }) {
       </div>
     );
   }
+
+  if (variant === "australia") {
+  return (
+    <div className="relative h-10 w-14 overflow-hidden rounded-md border border-[#c9a86a]/25 bg-[#1c2634] shadow-inner">
+      <div className="absolute left-0 top-0 h-5 w-7 bg-[#070707]">
+        <span className="absolute left-0 top-[8px] h-[3px] w-7 bg-[#f4ead3]" />
+        <span className="absolute left-[12px] top-0 h-5 w-[3px] bg-[#f4ead3]" />
+        <span className="absolute left-0 top-[9px] h-px w-7 bg-[#c9a86a]" />
+        <span className="absolute left-[13px] top-0 h-5 w-px bg-[#c9a86a]" />
+      </div>
+      <span className="absolute right-3 top-2 h-1.5 w-1.5 rounded-full bg-[#c9a86a] shadow-[0_0_8px_rgba(201,168,106,0.8)]" />
+      <span className="absolute right-6 top-6 h-1 w-1 rounded-full bg-[#f4ead3]" />
+      <span className="absolute bottom-2 right-3 h-1 w-1 rounded-full bg-[#c9a86a]" />
+    </div>
+  );
+}
+
+if (variant === "spain") {
+  return (
+    <div className="flex h-10 w-14 flex-col overflow-hidden rounded-md border border-[#c9a86a]/25 shadow-inner">
+      <span className="h-1/4 bg-[#7d2f2f]" />
+      <span className="h-1/2 bg-[#c9a86a]" />
+      <span className="h-1/4 bg-[#7d2f2f]" />
+    </div>
+  );
+}
 
   return (
     <div className="relative h-10 w-14 overflow-hidden rounded-md border border-[#c9a86a]/25 bg-[#1c2634] shadow-inner">
