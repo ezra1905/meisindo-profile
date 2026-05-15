@@ -65,6 +65,32 @@ const wineData: Record<
   ],
 },
 
+"new-zealand": {
+  title: "New Zealand Wine Collection",
+  description:
+    "Discover premium New Zealand wines known for their vibrant freshness and refined character.",
+  wines: [
+    {
+      name: "Sauvignon Blanc",
+      image: "/wines/nz-sauvignon-blanc.jpg",
+      description:
+        "Crisp and aromatic white wine with citrus and tropical fruit notes.",
+    },
+    {
+      name: "Pinot Noir",
+      image: "/wines/nz-pinot-noir.jpg",
+      description:
+        "Elegant red wine with silky texture and refined berry character.",
+    },
+    {
+      name: "Chardonnay",
+      image: "/wines/nz-chardonnay.jpg",
+      description:
+        "Balanced white wine with creamy texture and subtle oak complexity.",
+    },
+  ],
+},
+
   italy: {
     title: "Italian Wine Collection",
     description:
