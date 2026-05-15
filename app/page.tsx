@@ -112,7 +112,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#070707] text-white">
+    <main className="w-full max-w-full overflow-x-hidden bg-[#070707] text-white">
       {/* Background Blur */}
       <div className="absolute left-0 top-0 h-[500px] w-[500px] rounded-full bg-[#c9a86a]/10 blur-[120px]" />
       <div className="absolute bottom-0 right-0 h-[500px] w-[500px] rounded-full bg-[#c9a86a]/10 blur-[120px]" />
@@ -185,7 +185,16 @@ export default function Home() {
       </nav>
 
       {/* Hero */}
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6">
+      <section className="relative flex min-h-screen w-full max-w-full items-center justify-center overflow-hidden px-6">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-60"
+          style={{
+            backgroundImage: "url('/Hero.png')",
+          }}
+        />
+
+        <div className="absolute inset-0 bg-black/40" />
+
         <motion.div
           initial={{ opacity: 0, y: 70 }}
           animate={{ opacity: 1, y: 0 }}
@@ -226,14 +235,6 @@ export default function Home() {
           </div>
         </motion.div>
       </section>
-      <div
-        className="absolute inset-0 bg-cover bg-center opacity-60"
-        style={{
-          backgroundImage: "url('/Hero.png')",
-        }}
-      />
-
-      <div className="absolute inset-0 bg-black/1" />
 
       {/* About */}
       <section
@@ -316,7 +317,7 @@ export default function Home() {
           </div>
 
           <div
-            className="product-carousel -mx-6 overflow-hidden px-6 py-4"
+            className="product-carousel w-full max-w-full overflow-hidden py-4"
             aria-label="Wine categories by country"
           >
             <div className="product-carousel-track flex gap-6">
