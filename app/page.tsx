@@ -371,7 +371,7 @@ export default function Home() {
                     initial={{ opacity: 0, y: 60 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: (index % products.length) * 0.1 }}
-                    className="group relative min-h-[280px] w-[16rem] shrink-0 sm:w-[20rem] lg:w-[24rem] overflow-hidden rounded-3xl border border-white/10 bg-black/35 p-8 shadow-[0_0_0_rgba(201,168,106,0)] backdrop-blur-xl transition duration-500 hover:-translate-y-2 hover:border-[#c9a86a]/70 hover:bg-white/[0.08] hover:shadow-[0_0_42px_rgba(201,168,106,0.28)] sm:w-[22rem] lg:w-[24rem]"
+                    className="group relative flex h-[390px] w-[16rem] shrink-0 flex-col overflow-hidden rounded-3xl border border-white/10 bg-black/35 p-8 shadow-[0_0_0_rgba(201,168,106,0)] backdrop-blur-xl transition duration-500 hover:-translate-y-2 hover:border-[#c9a86a]/70 hover:bg-white/[0.08] hover:shadow-[0_0_42px_rgba(201,168,106,0.28)] sm:w-[22rem] lg:w-[24rem]"
                   >
                     <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-[#c9a86a]/70 to-transparent opacity-0 transition duration-500 group-hover:opacity-100" />
                     <div className="absolute right-6 top-6 rounded-full border border-[#c9a86a]/20 px-4 py-1 text-xs uppercase tracking-[0.28em] text-[#c9a86a]/80">
@@ -392,7 +392,7 @@ export default function Home() {
                       {item.highlight}
                     </p>
 
-                    <button className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#c9a86a] transition group-hover:gap-3">
+                    <button className="mt-auto flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#c9a86a] transition group-hover:gap-3">
                       Explore
                       <ChevronRight size={18} />
                     </button>
