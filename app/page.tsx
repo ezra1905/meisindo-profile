@@ -236,8 +236,8 @@ export default function Home() {
           playsInline
         />
 
-        <div className="absolute inset-0 bg-black/45" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/70" />
+        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/40" />
 
         <div className="absolute inset-0 bg-black/40" />
 
