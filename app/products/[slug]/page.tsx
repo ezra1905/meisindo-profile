@@ -41,14 +41,14 @@ const wineData: Record<string, WineCollection> = {
       "Explore expressive South African wines from coastal vineyards and historic wine regions.",
     wines: [
       {
-        name: "Chenin Blanc",
-        image: "/wines/chenin-blanc.jpg",
+        name: "Bernard Seris",
+        image: "/wines/bernard.png",
         description:
           "Fresh and vibrant white wine with citrus, apple, and mineral notes.",
       },
       {
-        name: "Pinotage",
-        image: "/wines/pinotage.jpg",
+        name: "Bellingham Series",
+        image: "/wines/bellingham.png",
         description:
           "South Africa's signature red wine with dark fruit, spice, and smoky character.",
       },
