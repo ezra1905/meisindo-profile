@@ -41,7 +41,7 @@ const wineData: Record<string, WineCollection> = {
       "Explore expressive South African wines from coastal vineyards and historic wine regions.",
     wines: [
       {
-        name: "Bernard Seris",
+        name: "Bernard Series",
         image: "/wines/bernard.png",
         description:
           "Fresh and vibrant white wine with citrus, apple, and mineral notes.",
