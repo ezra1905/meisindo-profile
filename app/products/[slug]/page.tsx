@@ -124,13 +124,13 @@ const wineData: Record<string, WineCollection> = {
       "Bold and expressive wines from Australia's finest wine regions.",
     wines: [
       {
-        name: "Shiraz",
-        image: "/wines/shiraz.jpg",
+        name: "Welland",
+        image: "/wines/welland.png",
         description: "Bold red wine with dark berries and pepper complexity.",
       },
       {
-        name: "Cabernet",
-        image: "/wines/australia-cabernet.jpg",
+        name: "McPherson",
+        image: "/wines/mcperson.png",
         description: "Structured wine with elegant tannins and oak finish.",
       },
     ],
