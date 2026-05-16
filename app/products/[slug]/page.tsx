@@ -81,21 +81,10 @@ const wineData: Record<string, WineCollection> = {
       "Classic Italian selections with elegant structure and rich heritage.",
     wines: [
       {
-        name: "Chianti",
-        image: "/wines/chianti.jpg",
+        name: "È Gòt Series",
+        image: "/wines/e-got.png",
         description:
-          "Traditional Tuscan wine with vibrant cherry and spice notes.",
-      },
-      {
-        name: "Barolo",
-        image: "/wines/barolo.jpg",
-        description:
-          "Powerful and refined wine with exceptional aging potential.",
-      },
-      {
-        name: "Pinot Grigio",
-        image: "/wines/pinot-grigio.jpg",
-        description: "Fresh and crisp white wine perfect for modern dining.",
+          "È Gòt delivers smooth flavors with elegant character and authentic Italian charm.",
       },
     ],
   },
@@ -124,20 +113,10 @@ const wineData: Record<string, WineCollection> = {
       "Mediterranean wine selections with expressive and elegant character.",
     wines: [
       {
-        name: "Tempranillo",
-        image: "/wines/tempranillo.jpg",
+        name: "Expresion Series",
+        image: "/wines/expresion.jpg",
         description:
           "Classic Spanish red wine with rich berry and spice notes.",
-      },
-      {
-        name: "Rioja",
-        image: "/wines/rioja.jpg",
-        description: "Elegant oak-aged wine with smooth balanced structure.",
-      },
-      {
-        name: "Cava",
-        image: "/wines/cava.jpg",
-        description: "Premium sparkling wine with refreshing citrus finish.",
       },
     ],
   },

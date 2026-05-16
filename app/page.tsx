@@ -549,7 +549,7 @@ export default function Home() {
             </h4>
 
             <ul className="space-y-3 text-white/50">
-              <li>info@meisindo.com</li>
+              <li>salesmeisindo@gmail.com</li>
               <li>Indonesia</li>
             </ul>
           </div>
