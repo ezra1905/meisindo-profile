@@ -73,22 +73,16 @@ const wineData: Record<string, WineCollection> = {
       "Discover premium New Zealand wines known for their vibrant freshness and refined character.",
     wines: [
       {
-        name: "Sauvignon Blanc",
-        image: "/wines/nz-sauvignon-blanc.jpg",
+        name: "Turning Heads",
+        image: "/wines/turningheads.png",
         description:
-          "Crisp and aromatic white wine with citrus and tropical fruit notes.",
+          "Refined wine experience that stands out for its rich flavors and smooth finish.",
       },
       {
-        name: "Pinot Noir",
-        image: "/wines/nz-pinot-noir.jpg",
+        name: "Babydoll",
+        image: "/wines/babydoll.png",
         description:
-          "Elegant red wine with silky texture and refined berry character.",
-      },
-      {
-        name: "Chardonnay",
-        image: "/wines/nz-chardonnay.jpg",
-        description:
-          "Balanced white wine with creamy texture and subtle oak complexity.",
+          "Refreshing Marlborough wine with elegance.",
       },
     ],
   },
