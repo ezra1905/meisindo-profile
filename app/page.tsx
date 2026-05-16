@@ -162,7 +162,10 @@ export default function Home() {
       {/* Navbar */}
       <nav className="fixed top-0 z-50 w-full border-b border-white/10 bg-black/30 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-6 sm:py-5">
-          <div className="flex items-center gap-3">
+          <a
+            href="#hero"
+            className="flex items-center gap-3 transition duration-300 hover:opacity-80"
+          >
             <Image
               src="/Logo.png"
               alt="Meisindo Karya Semesta"
@@ -174,7 +177,7 @@ export default function Home() {
             <span className="font-cinzel text-lg font-semibold tracking-[0.25em] text-white sm:text-2xl sm:tracking-[0.35em]">
               MEISINDO
             </span>
-          </div>
+          </a>
 
           {/* Desktop Menu */}
           <div className="hidden gap-8 text-sm text-white/70 md:flex">
@@ -227,7 +230,10 @@ export default function Home() {
       </nav>
 
       {/* Hero */}
-      <section className="relative flex min-h-screen w-full max-w-full items-center justify-center overflow-hidden px-6">
+      <section
+        id="hero"
+        className="relative flex min-h-screen w-full max-w-full items-center justify-center overflow-hidden px-6"
+      >
         <video
           className="absolute inset-0 h-full w-full object-cover"
           src="/hero-video.mp4"
@@ -310,7 +316,10 @@ export default function Home() {
               and a commitment to exceptional quality.
             </p>
 
-            <div className="relative mt-10 h-[126px] w-[92px] opacity-85" aria-hidden="true">
+            <div
+              className="relative mt-10 h-[126px] w-[92px] opacity-85"
+              aria-hidden="true"
+            >
               <motion.div
                 animate={
                   shouldReduceMotion ? undefined : { rotate: [-2, 2.5, -2] }
@@ -522,9 +531,7 @@ export default function Home() {
               className="group rounded-3xl border border-white/10 bg-white/5 p-8 transition duration-300 hover:border-[#c9a86a]/60 hover:bg-white/[0.07] hover:shadow-[0_0_32px_rgba(201,168,106,0.18)]"
             >
               <Mail className="mx-auto mb-5 text-[#c9a86a]" />
-              <p className="break-words text-white/70">
-                Mail Us
-              </p>
+              <p className="break-words text-white/70">Mail Us</p>
             </a>
 
             <a
