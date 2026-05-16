@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
 import {
   Wine,
@@ -144,6 +144,7 @@ function CountryFlag({ variant }: { variant: string }) {
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   const navLinks = [
     { label: "About", href: "#about" },
@@ -206,7 +207,7 @@ export default function Home() {
           }`}
         >
           <div className="space-y-2 px-5 py-5">
-            {navLinks.map((link, index) => (
+            {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -308,6 +309,46 @@ export default function Home() {
               delivering professional service, extensive distribution networks,
               and a commitment to exceptional quality.
             </p>
+
+            <div className="relative mt-10 h-[126px] w-[92px] opacity-85" aria-hidden="true">
+              <motion.div
+                animate={
+                  shouldReduceMotion ? undefined : { rotate: [-2, 2.5, -2] }
+                }
+                transition={
+                  shouldReduceMotion
+                    ? undefined
+                    : { duration: 5.8, ease: "easeInOut", repeat: Infinity }
+                }
+                className="relative mx-auto h-[88px] w-[62px] origin-top overflow-hidden rounded-[10px_10px_24px_24px] border border-white/30 bg-white/[0.03] shadow-[inset_0_0_18px_rgba(255,255,255,0.06),0_14px_34px_rgba(122,23,34,0.22)]"
+              >
+                <motion.div
+                  animate={
+                    shouldReduceMotion
+                      ? undefined
+                      : {
+                          x: [-2, 2, -2],
+                          rotate: [1.5, -1.5, 1.5],
+                        }
+                  }
+                  transition={
+                    shouldReduceMotion
+                      ? undefined
+                      : {
+                          duration: 4.6,
+                          ease: "easeInOut",
+                          repeat: Infinity,
+                        }
+                  }
+                  className="absolute bottom-0 left-[-14%] h-[42%] w-[128%] rounded-[46%_54%_18px_18px] bg-gradient-to-b from-[#9a2f3e] to-[#4a0f1c] shadow-[inset_0_10px_18px_rgba(255,205,176,0.11)]"
+                >
+                  <span className="absolute left-0 top-[-8px] h-4 w-full rounded-full bg-[#b93c4b]/90" />
+                </motion.div>
+                <span className="absolute left-3.5 top-3 h-10 w-2 rounded-full bg-white/20 blur-[0.2px]" />
+              </motion.div>
+              <span className="mx-auto -mt-px block h-7 w-px bg-white/30" />
+              <span className="mx-auto block h-px w-[52px] rounded-full bg-white/30 shadow-[0_0_18px_rgba(201,168,106,0.14)]" />
+            </div>
           </motion.div>
 
           <div className="grid gap-6">
