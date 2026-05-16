@@ -473,16 +473,16 @@ export default function Home() {
               className="group rounded-3xl border border-white/10 bg-white/5 p-8 transition duration-300 hover:border-[#c9a86a]/60 hover:bg-white/[0.07] hover:shadow-[0_0_32px_rgba(201,168,106,0.18)]"
             >
               <MessageCircle className="mx-auto mb-5 text-[#c9a86a] transition group-hover:scale-110" />
-              <p className="text-white/70">0819 9965 3330</p>
+              <p className="text-white/70">Whatsapp</p>
             </a>
 
             <a
-              href="mailto:ezra.alannathaniel19@gmail.com"
+              href="mailto:salesmeisindo@gmail.com"
               className="group rounded-3xl border border-white/10 bg-white/5 p-8 transition duration-300 hover:border-[#c9a86a]/60 hover:bg-white/[0.07] hover:shadow-[0_0_32px_rgba(201,168,106,0.18)]"
             >
               <Mail className="mx-auto mb-5 text-[#c9a86a]" />
               <p className="break-words text-white/70">
-                ezra.alannathaniel19@gmail.com
+                Mail Us
               </p>
             </a>
 
