@@ -114,7 +114,7 @@ const wineData: Record<string, WineCollection> = {
     wines: [
       {
         name: "Expresion Series",
-        image: "/wines/expresion.jpg",
+        image: "/wines/expresion.png",
         description:
           "Classic Spanish red wine with rich berry and spice notes.",
       },
