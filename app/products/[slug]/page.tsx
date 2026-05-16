@@ -22,20 +22,14 @@ const wineData: Record<string, WineCollection> = {
       "Discover elegant French wines curated for premium hospitality and luxury dining experiences.",
     wines: [
       {
-        name: "Chardonnay",
-        image: "/wines/chardonnay.jpg",
-        description:
-          "Elegant white wine with citrus, vanilla, and creamy textures.",
-      },
-      {
-        name: "Cabernet Sauvignon",
-        image: "/wines/cabernet.jpg",
+        name: "Aurelius Saint Emilion Grand Cru",
+        image: "/wines/emilion.png",
         description:
           "Rich full-bodied wine with dark fruit and oak complexity.",
       },
       {
         name: "Merlot",
-        image: "/wines/merlot.jpg",
+        image: "/wines/merlot.png",
         description: "Smooth and velvety wine with balanced fruit character.",
       },
     ],
