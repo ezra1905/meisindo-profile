@@ -52,12 +52,6 @@ const wineData: Record<string, WineCollection> = {
         description:
           "South Africa's signature red wine with dark fruit, spice, and smoky character.",
       },
-      {
-        name: "Sauvignon Blanc",
-        image: "/wines/south-africa-sauvignon-blanc.jpg",
-        description:
-          "Crisp coastal white wine with tropical fruit and refreshing acidity.",
-      },
     ],
   },
 
