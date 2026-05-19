@@ -69,7 +69,16 @@ function toIsoDate(value: unknown, fallback = new Date().toISOString()) {
 
 function toImagePath(value: unknown) {
   const image = toText(value);
-  return image.startsWith("/") ? image : fallbackNewsImage;
+
+  if (
+    image.startsWith("/") ||
+    image.startsWith("https://") ||
+    image.startsWith("http://")
+  ) {
+    return image;
+  }
+
+  return fallbackNewsImage;
 }
 
 function summarizeContent(content: string) {
