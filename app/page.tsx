@@ -520,39 +520,6 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* Clients */}
-      <motion.section
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-        id="clients"
-        className="scroll-mt-24 border-t border-white/10 px-5 py-20 sm:px-6 sm:py-28 lg:py-32"
-      >
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-16 text-center">
-            <p className="mb-4 text-sm uppercase tracking-[0.4em] text-[#c9a86a]">
-              Clients
-            </p>
-
-            <h2 className="font-cinzel text-3xl font-bold sm:text-4xl md:text-5xl">
-              Trusted By Dozens of Clients
-            </h2>
-          </div>
-
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {clients.map((item) => (
-              <div
-                key={item}
-                className="rounded-3xl border border-white/10 bg-black/30 p-10 text-center text-2xl font-medium text-white/70 backdrop-blur-xl"
-              >
-                {item}
-              </div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
-
       {/* News */}
       <motion.section
         initial={{ opacity: 0, y: 60 }}
@@ -645,6 +612,39 @@ export default function Home() {
               ))}
             </div>
           )}
+        </div>
+      </motion.section>
+
+      {/* Clients */}
+      <motion.section
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+        id="clients"
+        className="scroll-mt-24 border-t border-white/10 px-5 py-20 sm:px-6 sm:py-28 lg:py-32"
+      >
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-16 text-center">
+            <p className="mb-4 text-sm uppercase tracking-[0.4em] text-[#c9a86a]">
+              Clients
+            </p>
+
+            <h2 className="font-cinzel text-3xl font-bold sm:text-4xl md:text-5xl">
+              Trusted By Dozens of Clients
+            </h2>
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {clients.map((item) => (
+              <div
+                key={item}
+                className="rounded-3xl border border-white/10 bg-black/30 p-10 text-center text-2xl font-medium text-white/70 backdrop-blur-xl"
+              >
+                {item}
+              </div>
+            ))}
+          </div>
         </div>
       </motion.section>
 
