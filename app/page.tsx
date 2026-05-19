@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Wine,
   Users,
@@ -11,6 +11,7 @@ import {
   Mail,
   MapPin,
   ChevronRight,
+  Calendar,
   MessageCircle,
   Menu,
   X,
@@ -67,6 +68,29 @@ const clients = [
   "Event Organizers",
   "Cafés",
 ];
+
+type NewsPreview = {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  image: string;
+  publishedAt: string;
+};
+
+const newsDateFormatter = new Intl.DateTimeFormat("en", {
+  day: "2-digit",
+  month: "short",
+  year: "numeric",
+});
+
+function formatNewsDate(value: string) {
+  const date = new Date(value);
+  return Number.isNaN(date.getTime())
+    ? "Recent"
+    : newsDateFormatter.format(date);
+}
 
 function CountryFlag({ variant }: { variant: string }) {
   if (variant === "france") {
@@ -144,14 +168,51 @@ function CountryFlag({ variant }: { variant: string }) {
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [newsItems, setNewsItems] = useState<NewsPreview[]>([]);
+  const [hasLoadedNews, setHasLoadedNews] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
   const navLinks = [
     { label: "About", href: "#about" },
     { label: "Products", href: "#products" },
+    { label: "News", href: "#news" },
     { label: "Clients", href: "#clients" },
     { label: "Contact", href: "#contact" },
   ];
+
+  useEffect(() => {
+    let isMounted = true;
+
+    async function loadNews() {
+      try {
+        const response = await fetch("/api/news", { cache: "no-store" });
+
+        if (!response.ok) {
+          throw new Error("Failed to load news");
+        }
+
+        const data = (await response.json()) as { news?: NewsPreview[] };
+
+        if (isMounted) {
+          setNewsItems((data.news ?? []).slice(0, 3));
+        }
+      } catch {
+        if (isMounted) {
+          setNewsItems([]);
+        }
+      } finally {
+        if (isMounted) {
+          setHasLoadedNews(true);
+        }
+      }
+    }
+
+    void loadNews();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return (
     <main className="w-full max-w-full overflow-x-hidden bg-[#070707] text-white">
@@ -492,6 +553,101 @@ export default function Home() {
         </div>
       </motion.section>
 
+      {/* News */}
+      <motion.section
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+        id="news"
+        className="scroll-mt-24 border-t border-white/10 px-5 py-20 sm:px-6 sm:py-28 lg:py-32"
+      >
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-16 flex flex-col gap-6 text-left md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="mb-4 text-sm uppercase tracking-[0.4em] text-[#c9a86a]">
+                News
+              </p>
+
+              <h2 className="font-cinzel text-3xl font-bold sm:text-4xl md:text-5xl">
+                Latest Updates
+              </h2>
+            </div>
+
+            <Link
+              href="/news"
+              className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#c9a86a] transition hover:gap-3 hover:text-white"
+            >
+              View All News
+              <ChevronRight size={18} />
+            </Link>
+          </div>
+
+          {hasLoadedNews ? (
+            newsItems.length > 0 ? (
+              <div className="grid gap-5 md:grid-cols-3">
+                {newsItems.map((article) => (
+                  <Link
+                    href={`/news/${article.slug}`}
+                    key={article.id}
+                    className="group flex min-w-0 flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/5 transition duration-500 hover:-translate-y-2 hover:border-[#c9a86a]/60 hover:shadow-[0_0_40px_rgba(201,168,106,0.18)]"
+                  >
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={article.image || "/Hero.png"}
+                        alt={article.title}
+                        fill
+                        sizes="(min-width: 768px) 33vw, 100vw"
+                        className="object-cover transition duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    </div>
+
+                    <div className="flex flex-1 flex-col p-6">
+                      <div className="mb-4 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.18em] text-white/45">
+                        <span className="text-[#c9a86a]">
+                          {article.category}
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 normal-case tracking-normal">
+                          <Calendar size={14} />
+                          {formatNewsDate(article.publishedAt)}
+                        </span>
+                      </div>
+
+                      <h3 className="mb-4 text-2xl font-semibold leading-snug">
+                        {article.title}
+                      </h3>
+
+                      <p className="mb-8 leading-7 text-white/60">
+                        {article.excerpt}
+                      </p>
+
+                      <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#c9a86a] transition group-hover:gap-3">
+                        Read More
+                        <ChevronRight size={18} />
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-10 text-center text-white/60">
+                No news has been published yet.
+              </div>
+            )
+          ) : (
+            <div className="grid gap-5 md:grid-cols-3">
+              {[0, 1, 2].map((item) => (
+                <div
+                  key={item}
+                  className="h-[420px] animate-pulse rounded-3xl border border-white/10 bg-white/[0.04]"
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      </motion.section>
+
       {/* Contact */}
       <motion.section
         initial={{ opacity: 0, y: 60 }}
@@ -581,6 +737,9 @@ export default function Home() {
               </li>
               <li>
                 <a href="#products">Products</a>
+              </li>
+              <li>
+                <a href="#news">News</a>
               </li>
               <li>
                 <a href="#clients">Clients</a>

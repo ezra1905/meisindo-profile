@@ -1,0 +1,38 @@
+[
+  {
+    "id": "news-2026-seasonal-selection",
+    "slug": "seasonal-selection-for-hospitality-partners",
+    "title": "Seasonal Selection for Hospitality Partners",
+    "excerpt": "Meisindo introduces a refreshed seasonal wine selection tailored for hotels, restaurants, lounges, and event partners.",
+    "content": "Meisindo Karya Semesta is preparing a refreshed seasonal wine selection for hospitality partners across Indonesia.\n\nThe program highlights versatile bottles for dining rooms, lounges, private events, and retail displays, with a focus on consistent supply and approachable pairing guidance.\n\nPartners can contact the sales team to request the latest availability list and curated recommendations for their venue.",
+    "category": "Company News",
+    "image": "/Hero.png",
+    "publishedAt": "2026-05-16T08:00:00.000Z",
+    "status": "published",
+    "updatedAt": "2026-05-16T08:00:00.000Z"
+  },
+  {
+    "id": "news-2026-product-training",
+    "slug": "product-knowledge-session-for-service-teams",
+    "title": "Product Knowledge Session for Service Teams",
+    "excerpt": "Our product knowledge sessions help partner teams recommend wine confidently across premium hospitality settings.",
+    "content": "Meisindo continues to support partner venues with product knowledge sessions for service teams.\n\nThe sessions cover wine profiles, pairing ideas, handling notes, and practical selling points that can be used during daily service.\n\nThis support is designed to help hospitality teams build confidence while presenting premium wine selections to guests.",
+    "category": "Partner Support",
+    "image": "/bg-products.png",
+    "publishedAt": "2026-05-10T08:00:00.000Z",
+    "status": "published",
+    "updatedAt": "2026-05-10T08:00:00.000Z"
+  },
+  {
+    "id": "news-2026-import-portfolio",
+    "slug": "portfolio-update-for-imported-wines",
+    "title": "Portfolio Update for Imported Wines",
+    "excerpt": "The Meisindo portfolio now features expanded selections from several established wine regions.",
+    "content": "The Meisindo portfolio has been updated with expanded selections from established wine regions including France, South Africa, New Zealand, Italy, Australia, and Spain.\n\nThe refreshed portfolio gives partners more flexibility for premium lists, private events, and retail programs.\n\nFor current stock information, partners can reach out directly to the Meisindo sales team.",
+    "category": "Portfolio",
+    "image": "/wine-1.png",
+    "publishedAt": "2026-05-04T08:00:00.000Z",
+    "status": "published",
+    "updatedAt": "2026-05-04T08:00:00.000Z"
+  }
+]

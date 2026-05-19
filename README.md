@@ -20,6 +20,27 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## News Database
+
+The news admin uses Turso/libSQL for persistent storage in production.
+
+Create a Turso database, then set these environment variables locally and in Vercel:
+
+```bash
+TURSO_DATABASE_URL=libsql://your-database-name.turso.io
+TURSO_AUTH_TOKEN=your-turso-auth-token
+NEWS_ADMIN_PASSWORD=your-admin-password
+```
+
+Useful Turso CLI commands:
+
+```bash
+turso db show --url <database-name>
+turso db tokens create <database-name>
+```
+
+The `news` table is created automatically on first request. If the table is empty, the app seeds initial news from `data/news.json`.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
