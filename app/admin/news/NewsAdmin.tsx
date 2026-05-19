@@ -139,6 +139,37 @@ export default function NewsAdmin() {
     [form.id, news],
   );
 
+  function applySavedArticle(savedArticle: NewsArticle) {
+    setNews((current) => {
+      const exists = current.some((article) => article.id === savedArticle.id);
+      const nextNews = exists
+        ? current.map((article) =>
+            article.id === savedArticle.id ? savedArticle : article,
+          )
+        : [savedArticle, ...current];
+
+      return nextNews.sort(
+        (a, b) =>
+          new Date(b.publishedAt).getTime() -
+          new Date(a.publishedAt).getTime(),
+      );
+    });
+    setForm(articleToForm(savedArticle));
+  }
+
+  function getFormPayload(imageUrl = form.image) {
+    return {
+      title: form.title,
+      slug: form.slug,
+      excerpt: form.excerpt,
+      content: form.content,
+      category: form.category,
+      image: imageUrl,
+      publishedAt: form.publishedAt,
+      status: form.status,
+    };
+  }
+
   async function loadNews(nextPassword = password) {
     if (!nextPassword) {
       return;
@@ -262,8 +293,28 @@ export default function NewsAdmin() {
         throw new Error("Upload berhasil, tapi URL gambar tidak ditemukan.");
       }
 
-      updateForm("image", body.url);
-      setMessage("Gambar berhasil diupload. Simpan berita untuk menerapkan.");
+      if (!form.id) {
+        updateForm("image", body.url);
+        setMessage("Gambar berhasil diupload. Simpan berita untuk menerapkan.");
+        return;
+      }
+
+      const updateResponse = await fetch(`/api/admin/news/${form.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "x-admin-password": password,
+        },
+        body: JSON.stringify(getFormPayload(body.url)),
+      });
+      const updateBody = await readJson(updateResponse);
+
+      if (!updateBody.article) {
+        throw new Error("Gambar terupload, tapi berita gagal diperbarui.");
+      }
+
+      applySavedArticle(updateBody.article);
+      setMessage("Gambar berhasil diupload dan berita sudah diperbarui.");
     } catch (requestError) {
       setError(
         requestError instanceof Error
@@ -281,16 +332,7 @@ export default function NewsAdmin() {
     setError("");
     setMessage("");
 
-    const payload = {
-      title: form.title,
-      slug: form.slug,
-      excerpt: form.excerpt,
-      content: form.content,
-      category: form.category,
-      image: form.image,
-      publishedAt: form.publishedAt,
-      status: form.status,
-    };
+    const payload = getFormPayload();
 
     try {
       const response = await fetch(
@@ -311,21 +353,7 @@ export default function NewsAdmin() {
         throw new Error("Berita tersimpan, tapi response tidak lengkap.");
       }
 
-      setNews((current) => {
-        const exists = current.some((article) => article.id === savedArticle.id);
-        const nextNews = exists
-          ? current.map((article) =>
-              article.id === savedArticle.id ? savedArticle : article,
-            )
-          : [savedArticle, ...current];
-
-        return nextNews.sort(
-          (a, b) =>
-            new Date(b.publishedAt).getTime() -
-            new Date(a.publishedAt).getTime(),
-        );
-      });
-      setForm(articleToForm(savedArticle));
+      applySavedArticle(savedArticle);
       setMessage("Berita berhasil disimpan.");
     } catch (requestError) {
       setError(
