@@ -8,6 +8,7 @@ import {
   Eye,
   ImageIcon,
   Loader2,
+  LogOut,
   LogIn,
   Plus,
   Save,
@@ -220,6 +221,20 @@ export default function NewsAdmin() {
   }, []);
 
   function resetForm() {
+    setForm({
+      ...emptyForm,
+      publishedAt: new Date().toISOString().slice(0, 10),
+    });
+    setMessage("");
+    setError("");
+  }
+
+  function handleLogout() {
+    window.localStorage.removeItem(passwordStorageKey);
+    setPassword("");
+    setLoginPassword("");
+    setIsAuthenticated(false);
+    setNews([]);
     setForm({
       ...emptyForm,
       publishedAt: new Date().toISOString().slice(0, 10),
@@ -475,6 +490,14 @@ export default function NewsAdmin() {
             >
               <Plus size={17} />
               Berita Baru
+            </button>
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="inline-flex items-center gap-2 rounded-lg border border-red-400/25 px-4 py-3 text-sm font-semibold text-red-100 transition hover:bg-red-400/10"
+            >
+              <LogOut size={17} />
+              Logout
             </button>
           </div>
         </header>
