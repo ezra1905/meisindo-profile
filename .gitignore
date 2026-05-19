@@ -29,6 +29,7 @@ data/*.sqlite-wal
 data/*.db
 data/*.db-shm
 data/*.db-wal
+public/uploads/
 
 # debug
 npm-debug.log*

@@ -1,17 +1,26 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import {
   Calendar,
   Edit3,
   Eye,
+  ImageIcon,
   Loader2,
   LogIn,
   Plus,
   Save,
   Trash2,
+  Upload,
 } from "lucide-react";
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import {
+  ChangeEvent,
+  FormEvent,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 type NewsStatus = "draft" | "published";
 
@@ -103,6 +112,7 @@ async function readJson(response: Response) {
     error?: string;
     news?: NewsArticle[];
     article?: NewsArticle;
+    url?: string;
   };
 
   if (!response.ok) {
@@ -122,6 +132,7 @@ export default function NewsAdmin() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [isUploadingImage, setIsUploadingImage] = useState(false);
 
   const selectedArticle = useMemo(
     () => news.find((article) => article.id === form.id),
@@ -220,6 +231,48 @@ export default function NewsAdmin() {
   async function handleLogin(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     await loadNews(loginPassword.trim());
+  }
+
+  async function handleImageUpload(event: ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+
+    if (!file) {
+      return;
+    }
+
+    setIsUploadingImage(true);
+    setError("");
+    setMessage("");
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const response = await fetch("/api/admin/news/upload", {
+        method: "POST",
+        headers: {
+          "x-admin-password": password,
+        },
+        body: formData,
+      });
+      const body = await readJson(response);
+
+      if (!body.url) {
+        throw new Error("Upload berhasil, tapi URL gambar tidak ditemukan.");
+      }
+
+      updateForm("image", body.url);
+      setMessage("Gambar berhasil diupload. Simpan berita untuk menerapkan.");
+    } catch (requestError) {
+      setError(
+        requestError instanceof Error
+          ? requestError.message
+          : "Gambar gagal diupload.",
+      );
+    } finally {
+      setIsUploadingImage(false);
+    }
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -569,14 +622,49 @@ export default function NewsAdmin() {
                 <span className="mb-2 block text-sm font-medium text-white/70">
                   Gambar
                 </span>
-                <input
-                  type="text"
-                  value={form.image}
-                  onChange={(event) => updateForm("image", event.target.value)}
-                  className="w-full rounded-lg border border-white/10 bg-black/50 px-4 py-3 text-white outline-none transition focus:border-[#c9a86a]"
-                  placeholder="/Hero.png"
-                />
+                <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_190px]">
+                  <input
+                    type="text"
+                    value={form.image}
+                    onChange={(event) => updateForm("image", event.target.value)}
+                    className="w-full rounded-lg border border-white/10 bg-black/50 px-4 py-3 text-white outline-none transition focus:border-[#c9a86a]"
+                    placeholder="/Hero.png"
+                  />
+                  <label className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-[#c9a86a]/40 px-4 py-3 text-sm font-semibold text-[#c9a86a] transition hover:bg-[#c9a86a]/10">
+                    {isUploadingImage ? (
+                      <Loader2 className="animate-spin" size={17} />
+                    ) : (
+                      <Upload size={17} />
+                    )}
+                    Attachment
+                    <input
+                      type="file"
+                      accept="image/jpeg,image/png,image/webp,image/gif"
+                      onChange={(event) => void handleImageUpload(event)}
+                      className="sr-only"
+                      disabled={isUploadingImage}
+                    />
+                  </label>
+                </div>
               </label>
+
+              {form.image ? (
+                <div className="overflow-hidden rounded-lg border border-white/10 bg-black/30">
+                  <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3 text-sm font-medium text-white/60">
+                    <ImageIcon size={16} />
+                    Preview Gambar
+                  </div>
+                  <div className="relative h-56 w-full">
+                    <Image
+                      src={form.image}
+                      alt="Preview gambar berita"
+                      fill
+                      sizes="(min-width: 1024px) 760px, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+              ) : null}
 
               <label className="block">
                 <span className="mb-2 block text-sm font-medium text-white/70">

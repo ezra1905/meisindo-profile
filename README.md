@@ -30,6 +30,7 @@ Create a Turso database, then set these environment variables locally and in Ver
 TURSO_DATABASE_URL=libsql://your-database-name.turso.io
 TURSO_AUTH_TOKEN=your-turso-auth-token
 NEWS_ADMIN_PASSWORD=your-admin-password
+BLOB_READ_WRITE_TOKEN=your-vercel-blob-read-write-token
 ```
 
 Useful Turso CLI commands:
@@ -40,6 +41,8 @@ turso db tokens create <database-name>
 ```
 
 The `news` table is created automatically on first request. If the table is empty, the app seeds initial news from `data/news.json`.
+
+News image uploads use Vercel Blob in production. Create a public Blob store from the Vercel project Storage tab so `BLOB_READ_WRITE_TOKEN` is available to the deployment. Uploaded image URLs are saved in Turso, so published news updates without committing new files.
 
 ## Learn More
 
