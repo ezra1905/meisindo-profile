@@ -419,26 +419,26 @@ export default function NewsAdmin() {
 
   if (!isAuthenticated) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-[#070707] px-5 py-16 text-white">
+      <main className="flex min-h-screen items-center justify-center bg-[#03143f] px-5 py-16 text-[#fff7ef]">
         <form
           onSubmit={handleLogin}
-          className="w-full max-w-md rounded-lg border border-white/10 bg-white/[0.04] p-6 shadow-[0_0_42px_rgba(201,168,106,0.12)]"
+          className="w-full max-w-md rounded-lg border border-white/10 bg-white/[0.04] p-6 shadow-[0_0_42px_rgba(237,106,23,0.12)]"
         >
-          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-[#c9a86a]">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-[#ed6a17]">
             Admin
           </p>
           <h1 className="font-cinzel mb-6 text-3xl font-bold">
             Kelola Berita
           </h1>
 
-          <label className="mb-2 block text-sm font-medium text-white/70">
+          <label className="mb-2 block text-sm font-medium text-[#fff7ef]/70">
             Password admin
           </label>
           <input
             type="password"
             value={loginPassword}
             onChange={(event) => setLoginPassword(event.target.value)}
-            className="mb-4 w-full rounded-lg border border-white/10 bg-black/50 px-4 py-3 text-white outline-none transition focus:border-[#c9a86a]"
+            className="mb-4 w-full rounded-lg border border-white/10 bg-[#020b26]/50 px-4 py-3 text-[#fff7ef] outline-none transition focus:border-[#ed6a17]"
             autoComplete="current-password"
           />
 
@@ -451,7 +451,7 @@ export default function NewsAdmin() {
           <button
             type="submit"
             disabled={isLoading || !loginPassword.trim()}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#c9a86a] px-5 py-3 font-bold text-black transition hover:bg-[#e2c47f] disabled:cursor-not-allowed disabled:opacity-50"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#ed6a17] px-5 py-3 font-bold text-[#03143f] transition hover:bg-[#ff9a45] disabled:cursor-not-allowed disabled:opacity-50"
           >
             {isLoading ? <Loader2 className="animate-spin" size={18} /> : <LogIn size={18} />}
             Masuk
@@ -462,11 +462,11 @@ export default function NewsAdmin() {
   }
 
   return (
-    <main className="min-h-screen bg-[#070707] px-4 py-8 text-white sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-[#03143f] px-4 py-8 text-[#fff7ef] sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <header className="mb-8 flex flex-col gap-4 border-b border-white/10 pb-6 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.28em] text-[#c9a86a]">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.28em] text-[#ed6a17]">
               Admin
             </p>
             <h1 className="font-cinzel text-3xl font-bold sm:text-4xl">
@@ -478,7 +478,7 @@ export default function NewsAdmin() {
             <Link
               href="/news"
               target="_blank"
-              className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-4 py-3 text-sm font-semibold text-white/70 transition hover:border-[#c9a86a] hover:text-[#c9a86a]"
+              className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-4 py-3 text-sm font-semibold text-[#fff7ef]/70 transition hover:border-[#ed6a17] hover:text-[#ed6a17]"
             >
               <Eye size={17} />
               Lihat Publik
@@ -486,7 +486,7 @@ export default function NewsAdmin() {
             <button
               type="button"
               onClick={resetForm}
-              className="inline-flex items-center gap-2 rounded-lg bg-[#c9a86a] px-4 py-3 text-sm font-bold text-black transition hover:bg-[#e2c47f]"
+              className="inline-flex items-center gap-2 rounded-lg bg-[#ed6a17] px-4 py-3 text-sm font-bold text-[#03143f] transition hover:bg-[#ff9a45]"
             >
               <Plus size={17} />
               Berita Baru
@@ -509,7 +509,7 @@ export default function NewsAdmin() {
               <button
                 type="button"
                 onClick={() => void loadNews()}
-                className="text-sm font-semibold text-[#c9a86a] transition hover:text-white"
+                className="text-sm font-semibold text-[#ed6a17] transition hover:text-[#fff7ef]"
               >
                 Refresh
               </button>
@@ -523,13 +523,13 @@ export default function NewsAdmin() {
                       key={article.id}
                       className={`rounded-lg border p-4 transition ${
                         form.id === article.id
-                          ? "border-[#c9a86a]/70 bg-[#c9a86a]/10"
-                          : "border-white/10 bg-black/20 hover:border-white/25"
+                          ? "border-[#ed6a17]/70 bg-[#ed6a17]/10"
+                          : "border-white/10 bg-[#020b26]/20 hover:border-white/25"
                       }`}
                     >
                       <div className="mb-3 flex items-start justify-between gap-4">
                         <div className="min-w-0">
-                          <p className="mb-2 text-xs uppercase tracking-[0.2em] text-[#c9a86a]">
+                          <p className="mb-2 text-xs uppercase tracking-[0.2em] text-[#ed6a17]">
                             {article.category}
                           </p>
                           <h3 className="line-clamp-2 font-semibold leading-snug">
@@ -540,14 +540,14 @@ export default function NewsAdmin() {
                           className={`shrink-0 rounded-full px-3 py-1 text-xs font-semibold ${
                             article.status === "published"
                               ? "bg-emerald-400/15 text-emerald-200"
-                              : "bg-white/10 text-white/55"
+                              : "bg-white/10 text-[#fff7ef]/55"
                           }`}
                         >
                           {article.status === "published" ? "Published" : "Draft"}
                         </span>
                       </div>
 
-                      <div className="mb-4 flex items-center gap-2 text-sm text-white/45">
+                      <div className="mb-4 flex items-center gap-2 text-sm text-[#fff7ef]/45">
                         <Calendar size={14} />
                         {formatDate(article.publishedAt)}
                       </div>
@@ -556,7 +556,7 @@ export default function NewsAdmin() {
                         <button
                           type="button"
                           onClick={() => setForm(articleToForm(article))}
-                          className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm font-semibold text-white/70 transition hover:border-[#c9a86a] hover:text-[#c9a86a]"
+                          className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm font-semibold text-[#fff7ef]/70 transition hover:border-[#ed6a17] hover:text-[#ed6a17]"
                         >
                           <Edit3 size={15} />
                           Edit
@@ -564,7 +564,7 @@ export default function NewsAdmin() {
                         <Link
                           href={`/news/${article.slug}`}
                           target="_blank"
-                          className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm font-semibold text-white/70 transition hover:border-[#c9a86a] hover:text-[#c9a86a]"
+                          className="inline-flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm font-semibold text-[#fff7ef]/70 transition hover:border-[#ed6a17] hover:text-[#ed6a17]"
                         >
                           <Eye size={15} />
                           Preview
@@ -582,7 +582,7 @@ export default function NewsAdmin() {
                   ))}
                 </div>
               ) : (
-                <p className="rounded-lg border border-white/10 bg-black/20 p-5 text-sm text-white/55">
+                <p className="rounded-lg border border-white/10 bg-[#020b26]/20 p-5 text-sm text-[#fff7ef]/55">
                   Belum ada berita.
                 </p>
               )}
@@ -599,27 +599,27 @@ export default function NewsAdmin() {
             <form onSubmit={handleSubmit} className="space-y-5 p-5">
               <div className="grid gap-4 md:grid-cols-2">
                 <label className="block">
-                  <span className="mb-2 block text-sm font-medium text-white/70">
+                  <span className="mb-2 block text-sm font-medium text-[#fff7ef]/70">
                     Judul
                   </span>
                   <input
                     type="text"
                     value={form.title}
                     onChange={(event) => updateForm("title", event.target.value)}
-                    className="w-full rounded-lg border border-white/10 bg-black/50 px-4 py-3 text-white outline-none transition focus:border-[#c9a86a]"
+                    className="w-full rounded-lg border border-white/10 bg-[#020b26]/50 px-4 py-3 text-[#fff7ef] outline-none transition focus:border-[#ed6a17]"
                     required
                   />
                 </label>
 
                 <label className="block">
-                  <span className="mb-2 block text-sm font-medium text-white/70">
+                  <span className="mb-2 block text-sm font-medium text-[#fff7ef]/70">
                     Slug URL
                   </span>
                   <input
                     type="text"
                     value={form.slug}
                     onChange={(event) => updateForm("slug", event.target.value)}
-                    className="w-full rounded-lg border border-white/10 bg-black/50 px-4 py-3 text-white outline-none transition focus:border-[#c9a86a]"
+                    className="w-full rounded-lg border border-white/10 bg-[#020b26]/50 px-4 py-3 text-[#fff7ef] outline-none transition focus:border-[#ed6a17]"
                     required
                   />
                 </label>
@@ -627,7 +627,7 @@ export default function NewsAdmin() {
 
               <div className="grid gap-4 md:grid-cols-3">
                 <label className="block">
-                  <span className="mb-2 block text-sm font-medium text-white/70">
+                  <span className="mb-2 block text-sm font-medium text-[#fff7ef]/70">
                     Kategori
                   </span>
                   <input
@@ -636,12 +636,12 @@ export default function NewsAdmin() {
                     onChange={(event) =>
                       updateForm("category", event.target.value)
                     }
-                    className="w-full rounded-lg border border-white/10 bg-black/50 px-4 py-3 text-white outline-none transition focus:border-[#c9a86a]"
+                    className="w-full rounded-lg border border-white/10 bg-[#020b26]/50 px-4 py-3 text-[#fff7ef] outline-none transition focus:border-[#ed6a17]"
                   />
                 </label>
 
                 <label className="block">
-                  <span className="mb-2 block text-sm font-medium text-white/70">
+                  <span className="mb-2 block text-sm font-medium text-[#fff7ef]/70">
                     Tanggal
                   </span>
                   <input
@@ -650,18 +650,18 @@ export default function NewsAdmin() {
                     onChange={(event) =>
                       updateForm("publishedAt", event.target.value)
                     }
-                    className="w-full rounded-lg border border-white/10 bg-black/50 px-4 py-3 text-white outline-none transition focus:border-[#c9a86a]"
+                    className="w-full rounded-lg border border-white/10 bg-[#020b26]/50 px-4 py-3 text-[#fff7ef] outline-none transition focus:border-[#ed6a17]"
                   />
                 </label>
 
                 <label className="block">
-                  <span className="mb-2 block text-sm font-medium text-white/70">
+                  <span className="mb-2 block text-sm font-medium text-[#fff7ef]/70">
                     Status
                   </span>
                   <select
                     value={form.status}
                     onChange={(event) => updateForm("status", event.target.value)}
-                    className="w-full rounded-lg border border-white/10 bg-black/50 px-4 py-3 text-white outline-none transition focus:border-[#c9a86a]"
+                    className="w-full rounded-lg border border-white/10 bg-[#020b26]/50 px-4 py-3 text-[#fff7ef] outline-none transition focus:border-[#ed6a17]"
                   >
                     <option value="published">Published</option>
                     <option value="draft">Draft</option>
@@ -670,7 +670,7 @@ export default function NewsAdmin() {
               </div>
 
               <label className="block">
-                <span className="mb-2 block text-sm font-medium text-white/70">
+                <span className="mb-2 block text-sm font-medium text-[#fff7ef]/70">
                   Gambar
                 </span>
                 <div className="grid gap-4 md:grid-cols-[minmax(0,1fr)_190px]">
@@ -678,10 +678,10 @@ export default function NewsAdmin() {
                     type="text"
                     value={form.image}
                     onChange={(event) => updateForm("image", event.target.value)}
-                    className="w-full rounded-lg border border-white/10 bg-black/50 px-4 py-3 text-white outline-none transition focus:border-[#c9a86a]"
+                    className="w-full rounded-lg border border-white/10 bg-[#020b26]/50 px-4 py-3 text-[#fff7ef] outline-none transition focus:border-[#ed6a17]"
                     placeholder="/Hero.png"
                   />
-                  <label className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-[#c9a86a]/40 px-4 py-3 text-sm font-semibold text-[#c9a86a] transition hover:bg-[#c9a86a]/10">
+                  <label className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-[#ed6a17]/40 px-4 py-3 text-sm font-semibold text-[#ed6a17] transition hover:bg-[#ed6a17]/10">
                     {isUploadingImage ? (
                       <Loader2 className="animate-spin" size={17} />
                     ) : (
@@ -700,8 +700,8 @@ export default function NewsAdmin() {
               </label>
 
               {form.image ? (
-                <div className="overflow-hidden rounded-lg border border-white/10 bg-black/30">
-                  <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3 text-sm font-medium text-white/60">
+                <div className="overflow-hidden rounded-lg border border-white/10 bg-[#020b26]/30">
+                  <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3 text-sm font-medium text-[#fff7ef]/60">
                     <ImageIcon size={16} />
                     Preview Gambar
                   </div>
@@ -718,26 +718,26 @@ export default function NewsAdmin() {
               ) : null}
 
               <label className="block">
-                <span className="mb-2 block text-sm font-medium text-white/70">
+                <span className="mb-2 block text-sm font-medium text-[#fff7ef]/70">
                   Ringkasan
                 </span>
                 <textarea
                   value={form.excerpt}
                   onChange={(event) => updateForm("excerpt", event.target.value)}
                   rows={3}
-                  className="w-full resize-y rounded-lg border border-white/10 bg-black/50 px-4 py-3 text-white outline-none transition focus:border-[#c9a86a]"
+                  className="w-full resize-y rounded-lg border border-white/10 bg-[#020b26]/50 px-4 py-3 text-[#fff7ef] outline-none transition focus:border-[#ed6a17]"
                 />
               </label>
 
               <label className="block">
-                <span className="mb-2 block text-sm font-medium text-white/70">
+                <span className="mb-2 block text-sm font-medium text-[#fff7ef]/70">
                   Isi Berita
                 </span>
                 <textarea
                   value={form.content}
                   onChange={(event) => updateForm("content", event.target.value)}
                   rows={13}
-                  className="w-full resize-y rounded-lg border border-white/10 bg-black/50 px-4 py-3 leading-7 text-white outline-none transition focus:border-[#c9a86a]"
+                  className="w-full resize-y rounded-lg border border-white/10 bg-[#020b26]/50 px-4 py-3 leading-7 text-[#fff7ef] outline-none transition focus:border-[#ed6a17]"
                   required
                 />
               </label>
@@ -758,7 +758,7 @@ export default function NewsAdmin() {
                 <button
                   type="button"
                   onClick={resetForm}
-                  className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/10 px-5 py-3 text-sm font-semibold text-white/70 transition hover:border-[#c9a86a] hover:text-[#c9a86a]"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/10 px-5 py-3 text-sm font-semibold text-[#fff7ef]/70 transition hover:border-[#ed6a17] hover:text-[#ed6a17]"
                 >
                   <Plus size={17} />
                   Form Baru
@@ -767,7 +767,7 @@ export default function NewsAdmin() {
                 <button
                   type="submit"
                   disabled={isSaving}
-                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#c9a86a] px-6 py-3 text-sm font-bold text-black transition hover:bg-[#e2c47f] disabled:cursor-not-allowed disabled:opacity-50"
+                  className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#ed6a17] px-6 py-3 text-sm font-bold text-[#03143f] transition hover:bg-[#ff9a45] disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {isSaving ? (
                     <Loader2 className="animate-spin" size={17} />

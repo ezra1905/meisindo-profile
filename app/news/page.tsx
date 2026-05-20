@@ -28,18 +28,18 @@ export default async function NewsPage() {
   const news = await getPublishedNews();
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-[#070707] px-4 pb-16 pt-20 text-white sm:px-6 sm:pb-24 sm:pt-24 lg:px-8">
+    <main className="min-h-screen overflow-x-hidden bg-[#03143f] px-4 pb-16 pt-20 text-[#fff7ef] sm:px-6 sm:pb-24 sm:pt-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <Link
           href="/"
-          className="mb-10 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#c9a86a] transition hover:text-white sm:mb-12 sm:text-sm sm:tracking-[0.25em]"
+          className="mb-10 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#ed6a17] transition hover:text-[#fff7ef] sm:mb-12 sm:text-sm sm:tracking-[0.25em]"
         >
           <ChevronLeft size={18} />
           <span>Back to Home</span>
         </Link>
 
         <div className="mb-12 text-left sm:mb-16 sm:text-center lg:mb-20">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.26em] text-[#c9a86a] sm:text-sm sm:tracking-[0.4em]">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.26em] text-[#ed6a17] sm:text-sm sm:tracking-[0.4em]">
             News
           </p>
 
@@ -47,7 +47,7 @@ export default async function NewsPage() {
             Latest Updates
           </h1>
 
-          <p className="mx-auto max-w-3xl text-base leading-7 text-white/60 sm:text-lg sm:leading-9">
+          <p className="mx-auto max-w-3xl text-base leading-7 text-[#fff7ef]/60 sm:text-lg sm:leading-9">
             Company news, wine portfolio updates, and partner support notes from
             Meisindo Karya Semesta.
           </p>
@@ -59,7 +59,7 @@ export default async function NewsPage() {
               <Link
                 key={article.id}
                 href={`/news/${article.slug}`}
-                className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition duration-500 hover:-translate-y-2 hover:border-[#c9a86a]/60 hover:shadow-[0_0_40px_rgba(201,168,106,0.18)] sm:rounded-3xl"
+                className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition duration-500 hover:-translate-y-2 hover:border-[#ed6a17]/60 hover:shadow-[0_0_40px_rgba(237,106,23,0.18)] sm:rounded-3xl"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
@@ -69,12 +69,12 @@ export default async function NewsPage() {
                     sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                     className="object-cover transition duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#020b26]/80 via-[#020b26]/20 to-transparent" />
                 </div>
 
                 <div className="flex flex-1 flex-col p-5 sm:p-6">
-                  <div className="mb-4 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.18em] text-white/45">
-                    <span className="text-[#c9a86a]">{article.category}</span>
+                  <div className="mb-4 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.18em] text-[#fff7ef]/45">
+                    <span className="text-[#ed6a17]">{article.category}</span>
                     <span className="inline-flex items-center gap-1.5 normal-case tracking-normal">
                       <Calendar size={14} />
                       {formatDate(article.publishedAt)}
@@ -85,11 +85,11 @@ export default async function NewsPage() {
                     {article.title}
                   </h2>
 
-                  <p className="mb-8 leading-7 text-white/60">
+                  <p className="mb-8 leading-7 text-[#fff7ef]/60">
                     {article.excerpt}
                   </p>
 
-                  <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#c9a86a] transition group-hover:gap-3">
+                  <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#ed6a17] transition group-hover:gap-3">
                     Read More
                     <ChevronRight size={18} />
                   </span>
@@ -98,7 +98,7 @@ export default async function NewsPage() {
             ))}
           </div>
         ) : (
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-10 text-center text-white/60">
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-10 text-center text-[#fff7ef]/60">
             No news has been published yet.
           </div>
         )}

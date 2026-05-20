@@ -141,25 +141,25 @@ export default async function ProductPage({
 
   if (!product) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-[#070707] px-5 text-center text-white">
+      <main className="flex min-h-screen items-center justify-center bg-[#03143f] px-5 text-center text-[#fff7ef]">
         Product not found
       </main>
     );
   }
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-[#070707] px-4 pb-16 pt-20 text-white sm:px-6 sm:pb-24 sm:pt-24 lg:px-8">
+    <main className="min-h-screen overflow-x-hidden bg-[#03143f] px-4 pb-16 pt-20 text-[#fff7ef] sm:px-6 sm:pb-24 sm:pt-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <Link
           href="/#products"
-          className="mb-10 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#c9a86a] transition hover:text-white sm:mb-12 sm:text-sm sm:tracking-[0.25em]"
+          className="mb-10 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#ed6a17] transition hover:text-[#fff7ef] sm:mb-12 sm:text-sm sm:tracking-[0.25em]"
         >
           <span aria-hidden="true">&larr;</span>
           <span>Back to Home</span>
         </Link>
 
         <div className="mb-12 text-left sm:mb-16 sm:text-center lg:mb-20">
-          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.26em] text-[#c9a86a] sm:text-sm sm:tracking-[0.4em]">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.26em] text-[#ed6a17] sm:text-sm sm:tracking-[0.4em]">
             Wine Collection
           </p>
 
@@ -167,7 +167,7 @@ export default async function ProductPage({
             {product.title}
           </h1>
 
-          <p className="mx-auto max-w-3xl text-base leading-7 text-white/60 sm:text-lg sm:leading-9">
+          <p className="mx-auto max-w-3xl text-base leading-7 text-[#fff7ef]/60 sm:text-lg sm:leading-9">
             {product.description}
           </p>
         </div>
@@ -180,7 +180,7 @@ export default async function ProductPage({
           {product.wines.map((wine) => (
             <div
               key={wine.name}
-              className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition duration-500 hover:-translate-y-2 hover:border-[#c9a86a]/60 hover:shadow-[0_0_40px_rgba(201,168,106,0.2)] sm:rounded-3xl"
+              className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition duration-500 hover:-translate-y-2 hover:border-[#ed6a17]/60 hover:shadow-[0_0_40px_rgba(237,106,23,0.2)] sm:rounded-3xl"
             >
               <div className="relative aspect-[4/3] overflow-hidden sm:aspect-[3/4] lg:aspect-[4/5]">
                 <Image
@@ -191,7 +191,7 @@ export default async function ProductPage({
                   className="object-cover transition duration-700 group-hover:scale-110"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#020b26] via-[#020b26]/20 to-transparent" />
               </div>
 
               <div className="flex flex-1 flex-col p-5 sm:p-6 lg:p-8">
@@ -199,7 +199,7 @@ export default async function ProductPage({
                   {wine.name}
                 </h2>
 
-                <p className="text-sm leading-7 text-white/60 sm:text-base">
+                <p className="text-sm leading-7 text-[#fff7ef]/60 sm:text-base">
                   {wine.description}
                 </p>
               </div>

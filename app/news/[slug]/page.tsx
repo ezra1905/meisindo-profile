@@ -38,19 +38,19 @@ export default async function NewsDetailPage({
   }
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-[#070707] px-4 pb-16 pt-20 text-white sm:px-6 sm:pb-24 sm:pt-24 lg:px-8">
+    <main className="min-h-screen overflow-x-hidden bg-[#03143f] px-4 pb-16 pt-20 text-[#fff7ef] sm:px-6 sm:pb-24 sm:pt-24 lg:px-8">
       <article className="mx-auto max-w-5xl">
         <Link
           href="/news"
-          className="mb-10 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#c9a86a] transition hover:text-white sm:mb-12 sm:text-sm sm:tracking-[0.25em]"
+          className="mb-10 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#ed6a17] transition hover:text-[#fff7ef] sm:mb-12 sm:text-sm sm:tracking-[0.25em]"
         >
           <ChevronLeft size={18} />
           <span>Back to News</span>
         </Link>
 
         <header className="mb-10 sm:mb-14">
-          <div className="mb-5 flex flex-wrap items-center gap-4 text-xs uppercase tracking-[0.18em] text-white/45">
-            <span className="text-[#c9a86a]">{article.category}</span>
+          <div className="mb-5 flex flex-wrap items-center gap-4 text-xs uppercase tracking-[0.18em] text-[#fff7ef]/45">
+            <span className="text-[#ed6a17]">{article.category}</span>
             <span className="inline-flex items-center gap-1.5 normal-case tracking-normal">
               <Calendar size={14} />
               {formatDate(article.publishedAt)}
@@ -61,7 +61,7 @@ export default async function NewsDetailPage({
             {article.title}
           </h1>
 
-          <p className="max-w-3xl text-base leading-8 text-white/60 sm:text-lg sm:leading-9">
+          <p className="max-w-3xl text-base leading-8 text-[#fff7ef]/60 sm:text-lg sm:leading-9">
             {article.excerpt}
           </p>
         </header>
@@ -75,10 +75,10 @@ export default async function NewsDetailPage({
             sizes="(min-width: 1024px) 896px, 100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#020b26]/45 via-transparent to-transparent" />
         </div>
 
-        <div className="max-w-3xl space-y-7 text-base leading-8 text-white/70 sm:text-lg sm:leading-9">
+        <div className="max-w-3xl space-y-7 text-base leading-8 text-[#fff7ef]/70 sm:text-lg sm:leading-9">
           {splitContent(article.content).map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
