@@ -452,7 +452,7 @@ export default function Home() {
             <div className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
               <Users className="mb-5 text-[#ed6a17]" size={40} />
               <h3 className="mb-3 text-2xl font-semibold">Trusted Clients</h3>
-d
+
               <p className="text-[#fff7ef]/60">
                 Trusted by dozens of hospitality, restaurant, and retail
                 partners.
@@ -690,7 +690,7 @@ d
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             <a
-              href="https://wa.me/6281999653330"
+              href="https://wa.me/6285157815688"
               target="_blank"
               rel="noopener noreferrer"
               className="group rounded-3xl border border-white/10 bg-white/5 p-8 transition duration-300 hover:border-[#ed6a17]/60 hover:bg-white/[0.07] hover:shadow-[0_0_32px_rgba(237,106,23,0.18)]"
@@ -722,7 +722,7 @@ d
 
       {/* Floating WA */}
       <a
-        href="https://wa.me/6281999653330"
+        href="https://wa.me/6285157815688"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-5 right-5 z-50 animate-pulse rounded-full bg-[#ed6a17] p-4 sm:p-5 text-[#03143f] shadow-[0_0_50px_rgba(237,106,23,0.6)] transition hover:scale-110"
