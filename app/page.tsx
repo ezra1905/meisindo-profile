@@ -696,7 +696,7 @@ export default function Home() {
               className="group rounded-3xl border border-white/10 bg-white/5 p-8 transition duration-300 hover:border-[#ed6a17]/60 hover:bg-white/[0.07] hover:shadow-[0_0_32px_rgba(237,106,23,0.18)]"
             >
               <MessageCircle className="mx-auto mb-5 text-[#ed6a17] transition group-hover:scale-110" />
-              <p className="text-[#fff7ef]/70">Whatsapp</p>
+              <p className="text-[#fff7ef]/70">Message Us</p>
             </a>
 
             <a
