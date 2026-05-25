@@ -452,7 +452,7 @@ export default function Home() {
             <div className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
               <Users className="mb-5 text-[#ed6a17]" size={40} />
               <h3 className="mb-3 text-2xl font-semibold">Trusted Clients</h3>
-
+d
               <p className="text-[#fff7ef]/60">
                 Trusted by dozens of hospitality, restaurant, and retail
                 partners.
