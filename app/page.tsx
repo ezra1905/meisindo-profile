@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import {
   Wine,
@@ -15,6 +15,8 @@ import {
   MessageCircle,
   Menu,
   X,
+  Star,
+  Award,
 } from "lucide-react";
 
 const products = [
@@ -193,7 +195,6 @@ export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [newsItems, setNewsItems] = useState<NewsPreview[]>([]);
   const [hasLoadedNews, setHasLoadedNews] = useState(false);
-  const shouldReduceMotion = useReducedMotion();
 
   const navLinks = [
     { label: "About", href: "#about" },
@@ -370,94 +371,86 @@ export default function Home() {
       {/* About */}
       <section
         id="about"
-        className="relative border-t border-white/10 px-5 py-20 sm:px-6 sm:py-28 lg:py-32"
+        className="relative bg-white px-5 py-20 sm:px-6 sm:py-28 lg:py-32"
       >
-        <div className="mx-auto grid max-w-7xl gap-16 md:grid-cols-2">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+        <div className="mx-auto max-w-7xl">
+          {/* Section Header */}
+          <div className="mb-16 text-center">
             <p className="mb-4 text-sm uppercase tracking-[0.4em] text-[#ed6a17]">
               About Us
             </p>
-
-            <h2 className="mb-8 text-5xl font-bold leading-tight">
-              Elegant Distribution
-              <br />
-              For Premium Wine
+            <h2 className="font-cinzel text-3xl font-bold text-[#03143f] sm:text-4xl md:text-5xl">
+              Elegant Distribution For Premium Wine
             </h2>
+          </div>
 
-            <p className="text-lg leading-9 text-[#fff7ef]/60">
-              Meisindo Karya Semesta is a premium wine distribution partner
-              delivering professional service, extensive distribution networks,
-              and a commitment to exceptional quality.
-            </p>
-
-            <div
-              className="relative mt-10 h-[126px] w-[92px] opacity-85"
-              aria-hidden="true"
-            >
+          {/* Stats Cards */}
+          <div className="mb-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { number: "6+", label: "Wine Origins", icon: Wine },
+              { number: "50+", label: "Partner Hotels", icon: Users },
+              { number: "100+", label: "Wine Selections", icon: Award },
+              { number: "8+", label: "Years Experience", icon: Star },
+            ].map((stat, i) => (
               <motion.div
-                animate={
-                  shouldReduceMotion ? undefined : { rotate: [-2, 2.5, -2] }
-                }
-                transition={
-                  shouldReduceMotion
-                    ? undefined
-                    : { duration: 5.8, ease: "easeInOut", repeat: Infinity }
-                }
-                className="relative mx-auto h-[88px] w-[62px] origin-top overflow-hidden rounded-[10px_10px_24px_24px] border border-white/30 bg-white/[0.03] shadow-[inset_0_0_18px_rgba(255,255,255,0.06),0_14px_34px_rgba(3,20,63,0.22)]"
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className="flex flex-col items-center text-center rounded-lg border border-gray-100 bg-white p-8 shadow-sm"
               >
-                <motion.div
-                  animate={
-                    shouldReduceMotion
-                      ? undefined
-                      : {
-                          x: [-2, 2, -2],
-                          rotate: [1.5, -1.5, 1.5],
-                        }
-                  }
-                  transition={
-                    shouldReduceMotion
-                      ? undefined
-                      : {
-                          duration: 4.6,
-                          ease: "easeInOut",
-                          repeat: Infinity,
-                        }
-                  }
-                  className="absolute bottom-0 left-[-14%] h-[42%] w-[128%] rounded-[46%_54%_18px_18px] bg-gradient-to-b from-[#ff9a45] to-[#b34d0f] shadow-[inset_0_10px_18px_rgba(255,247,239,0.12)]"
-                >
-                  <span className="absolute left-0 top-[-8px] h-4 w-full rounded-full bg-[#ed6a17]/90" />
-                </motion.div>
-                <span className="absolute left-3.5 top-3 h-10 w-2 rounded-full bg-white/20 blur-[0.2px]" />
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#ed6a17]/10">
+                  <stat.icon className="h-6 w-6 text-[#ed6a17]" />
+                </div>
+                <span className="mb-2 font-cinzel text-4xl font-bold text-[#03143f]">{stat.number}</span>
+                <span className="text-sm text-gray-500">{stat.label}</span>
               </motion.div>
-              <span className="mx-auto -mt-px block h-7 w-px bg-white/30" />
-              <span className="mx-auto block h-px w-[52px] rounded-full bg-white/30 shadow-[0_0_18px_rgba(237,106,23,0.14)]" />
-            </div>
-          </motion.div>
+            ))}
+          </div>
 
-          <div className="grid gap-6">
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
-              <Wine className="mb-5 text-[#ed6a17]" size={40} />
-              <h3 className="mb-3 text-2xl font-semibold">Premium Selection</h3>
-
-              <p className="text-[#fff7ef]/60">
-                Curated premium wine selections tailored for hospitality and
-                lifestyle industries.
+          {/* Two Column Content */}
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+            {/* Left - Text */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="mb-4 text-xl font-bold text-[#03143f]">Our Story</h3>
+              <p className="mb-6 text-base leading-relaxed text-gray-600">
+                Meisindo Karya Semesta is a premium wine distribution partner delivering professional service, extensive distribution networks, and a commitment to exceptional quality. We specialize in serving the hospitality industry with carefully curated wine selections from around the world.
               </p>
-            </div>
-
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
-              <Users className="mb-5 text-[#ed6a17]" size={40} />
-              <h3 className="mb-3 text-2xl font-semibold">Trusted Clients</h3>
-
-              <p className="text-[#fff7ef]/60">
-                Trusted by dozens of hospitality, restaurant, and retail
-                partners.
+              <p className="text-base leading-relaxed text-gray-600">
+                Our partnerships with renowned wine producers ensure that our clients receive only the finest products, backed by expert knowledge and reliable delivery services across Indonesia.
               </p>
-            </div>
+            </motion.div>
+
+            {/* Right - Features */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="space-y-4"
+            >
+              {[
+                { title: "Premium Selection", desc: "Curated wines from France, Italy, Australia, and more." },
+                { title: "Professional Service", desc: "Expert guidance for your wine program needs." },
+                { title: "Nationwide Distribution", desc: "Reliable delivery across Indonesia." },
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-4 rounded-lg border border-gray-100 bg-gray-50 p-5">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#ed6a17]">
+                    <ChevronRight className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="mb-1 font-semibold text-[#03143f]">{item.title}</h4>
+                    <p className="text-sm text-gray-500">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>
@@ -544,7 +537,7 @@ export default function Home() {
         transition={{ duration: 1 }}
         viewport={{ once: true }}
         id="news"
-        className="scroll-mt-24 border-t border-white/10 px-5 py-20 sm:px-6 sm:py-28 lg:py-32"
+        className="scroll-mt-24 bg-white px-5 py-20 sm:px-6 sm:py-28 lg:py-32"
       >
         <div className="mx-auto max-w-7xl">
           <div className="mb-16 flex flex-col gap-6 text-left md:flex-row md:items-end md:justify-between">
@@ -553,14 +546,14 @@ export default function Home() {
                 News
               </p>
 
-              <h2 className="font-cinzel text-3xl font-bold sm:text-4xl md:text-5xl">
+              <h2 className="font-cinzel text-3xl font-bold text-[#03143f] sm:text-4xl md:text-5xl">
                 Latest Updates
               </h2>
             </div>
 
             <Link
               href="/news"
-              className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#ed6a17] transition hover:gap-3 hover:text-[#fff7ef]"
+              className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#ed6a17] transition hover:gap-3 hover:text-[#03143f]"
             >
               View All News
               <ChevronRight size={18} />
@@ -569,101 +562,174 @@ export default function Home() {
 
           {hasLoadedNews ? (
             newsItems.length > 0 ? (
-              <div className="grid gap-5 md:grid-cols-3">
-                {newsItems.map((article) => (
-                  <Link
-                    href={`/news/${article.slug}`}
-                    key={article.id}
-                    className="group flex min-w-0 flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/5 transition duration-500 hover:-translate-y-2 hover:border-[#ed6a17]/60 hover:shadow-[0_0_40px_rgba(237,106,23,0.18)]"
-                  >
-                    <div className="relative aspect-[4/3] overflow-hidden">
-                      <Image
-                        src={article.image || "/Hero.png"}
-                        alt={article.title}
-                        fill
-                        sizes="(min-width: 768px) 33vw, 100vw"
-                        className="object-cover transition duration-700 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#020b26]/80 via-[#020b26]/20 to-transparent" />
-                    </div>
-
-                    <div className="flex flex-1 flex-col p-6">
-                      <div className="mb-4 flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.18em] text-[#fff7ef]/45">
-                        <span className="text-[#ed6a17]">
-                          {article.category}
-                        </span>
-                        <span className="inline-flex items-center gap-1.5 normal-case tracking-normal">
-                          <Calendar size={14} />
-                          {formatNewsDate(article.publishedAt)}
-                        </span>
-                      </div>
-
-                      <h3 className="mb-4 text-2xl font-semibold leading-snug">
-                        {article.title}
-                      </h3>
-
-                      <p className="mb-8 leading-7 text-[#fff7ef]/60">
-                        {article.excerpt}
-                      </p>
-
-                      <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#ed6a17] transition group-hover:gap-3">
-                        Read More
-                        <ChevronRight size={18} />
+              <div className="flex flex-col gap-6">
+                {/* Featured Article - Full Width */}
+                <Link
+                  href={`/news/${newsItems[0].slug}`}
+                  className="group flex flex-col overflow-hidden border border-gray-100 bg-white transition-all hover:-translate-y-1 hover:shadow-xl md:flex-row"
+                >
+                  <div className="relative aspect-[16/9] overflow-hidden md:w-1/2 lg:w-[60%]">
+                    <Image
+                      src={newsItems[0].image || "/Hero.png"}
+                      alt={newsItems[0].title}
+                      fill
+                      sizes="(min-width: 1024px) 60vw, 50vw"
+                      className="object-cover transition duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="flex flex-col justify-center p-8 md:w-1/2 lg:w-[40%]">
+                    <div className="mb-4 flex flex-wrap items-center gap-4 text-xs uppercase tracking-[0.18em] text-gray-400">
+                      <span className="font-medium uppercase tracking-wider text-[#ed6a17]">
+                        {newsItems[0].category}
+                      </span>
+                      <span className="flex items-center gap-1.5 normal-case tracking-normal">
+                        <Calendar size={14} />
+                        {formatNewsDate(newsItems[0].publishedAt)}
                       </span>
                     </div>
-                  </Link>
-                ))}
+                    <h3 className="mb-4 text-2xl font-bold leading-tight text-[#03143f] md:text-3xl">
+                      {newsItems[0].title}
+                    </h3>
+                    <p className="mb-6 line-clamp-2 text-base leading-relaxed text-gray-500">
+                      {newsItems[0].excerpt}
+                    </p>
+                    <span className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.22em] text-[#ed6a17] transition group-hover:gap-3">
+                      Read More
+                      <ChevronRight size={18} />
+                    </span>
+                  </div>
+                </Link>
+
+                {/* Secondary Articles - 2 Column Grid */}
+                {newsItems.length > 1 && (
+                  <div className="grid gap-6 md:grid-cols-2">
+                    {newsItems.slice(1, 3).map((article) => (
+                      <Link
+                        href={`/news/${article.slug}`}
+                        key={article.id}
+                        className="group flex flex-col overflow-hidden border border-gray-100 bg-white transition-all hover:-translate-y-1 hover:shadow-xl"
+                      >
+                        <div className="relative aspect-[16/10] overflow-hidden">
+                          <Image
+                            src={article.image || "/Hero.png"}
+                            alt={article.title}
+                            fill
+                            sizes="(min-width: 768px) 50vw, 100vw"
+                            className="object-cover transition duration-700 group-hover:scale-105"
+                          />
+                        </div>
+                        <div className="flex flex-1 flex-col p-6">
+                          <div className="mb-3 flex flex-wrap items-center gap-4 text-xs uppercase tracking-[0.18em] text-gray-400">
+                            <span className="font-medium uppercase tracking-wider text-[#ed6a17]">
+                              {article.category}
+                            </span>
+                            <span className="flex items-center gap-1.5 normal-case tracking-normal">
+                              <Calendar size={14} />
+                              {formatNewsDate(article.publishedAt)}
+                            </span>
+                          </div>
+                          <h3 className="mb-3 text-lg font-bold leading-snug text-[#03143f]">
+                            {article.title}
+                          </h3>
+                          <p className="line-clamp-2 text-sm leading-relaxed text-gray-500">
+                            {article.excerpt}
+                          </p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
             ) : (
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-10 text-center text-[#fff7ef]/60">
+              <div className="border border-gray-100 bg-gray-50 p-10 text-center text-gray-500">
                 No news has been published yet.
               </div>
             )
           ) : (
-            <div className="grid gap-5 md:grid-cols-3">
-              {[0, 1, 2].map((item) => (
-                <div
-                  key={item}
-                  className="h-[420px] animate-pulse rounded-3xl border border-white/10 bg-white/[0.04]"
-                />
-              ))}
+            <div className="flex flex-col gap-6">
+              <div className="flex h-64 animate-pulse md:h-48 border border-gray-100 bg-gray-50" />
+              <div className="grid gap-6 md:grid-cols-2">
+                <div className="h-64 animate-pulse border border-gray-100 bg-gray-50" />
+                <div className="h-64 animate-pulse border border-gray-100 bg-gray-50" />
+              </div>
             </div>
           )}
         </div>
       </motion.section>
 
       {/* Clients */}
-      <motion.section
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-        id="clients"
-        className="scroll-mt-24 border-t border-white/10 px-5 py-20 sm:px-6 sm:py-28 lg:py-32"
-      >
-        <div className="mx-auto max-w-7xl">
+      <section id="clients" className="relative overflow-hidden px-5 py-20 sm:px-6 sm:py-28 lg:py-32">
+        {/* Video Background */}
+        <div className="absolute inset-0">
+          <video
+            className="h-full w-full object-cover"
+            src="/clients-video.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+          <div className="absolute inset-0 bg-[#03143f]/70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#004aad]/30 via-transparent to-transparent" />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-7xl">
           <div className="mb-16 text-center">
             <p className="mb-4 text-sm uppercase tracking-[0.4em] text-[#ed6a17]">
-              Clients
+              Our Partners
             </p>
 
-            <h2 className="font-cinzel text-3xl font-bold sm:text-4xl md:text-5xl">
+            <h2 className="font-cinzel text-3xl font-bold text-white sm:text-4xl md:text-5xl">
               Trusted By Dozens of Clients
             </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-base text-white/70 sm:text-lg">
+              We proudly serve a diverse range of partners across the hospitality industry
+            </p>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {clients.map((item) => (
-              <div
-                key={item}
-                className="rounded-3xl border border-white/10 bg-[#020b26]/30 p-10 text-center text-2xl font-medium text-[#fff7ef]/70 backdrop-blur-xl"
+          {/* Client Categories with Icons */}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { name: "Hotels", desc: "5-star resorts & boutique hotels", count: "20+" },
+              { name: "Restaurants", desc: "Fine dining & casual eateries", count: "30+" },
+              { name: "Bars & Lounges", desc: "Cocktail bars & wine lounges", count: "15+" },
+              { name: "Retail Partners", desc: "Wine shops & specialty stores", count: "10+" },
+              { name: "Event Organizers", desc: "Corporate & private events", count: "8+" },
+              { name: "Cafés", desc: "Artisan coffee & wine cafés", count: "12+" },
+            ].map((client, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className="group flex flex-col items-center text-center rounded-lg border border-white/20 bg-white/10 p-8 backdrop-blur-sm transition-all hover:bg-white/20"
               >
-                {item}
-              </div>
+                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full border border-[#ed6a17] bg-[#ed6a17]">
+                  <span className="font-cinzel text-2xl font-bold text-white">{client.count}</span>
+                </div>
+                <h3 className="mb-2 text-lg font-bold text-white">{client.name}</h3>
+                <p className="text-sm text-white/70">{client.desc}</p>
+              </motion.div>
             ))}
           </div>
+
+          {/* CTA Banner */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mt-16 rounded-lg border border-[#ed6a17]/30 bg-white/10 p-8 text-center backdrop-blur-sm"
+          >
+            <h3 className="mb-3 text-xl font-bold text-white">Become Our Partner</h3>
+            <p className="mb-6 text-white/70">Join our network of hospitality partners and experience premium wine distribution.</p>
+            <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-[#ed6a17] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#d55d0f]">
+              Get In Touch <ChevronRight size={16} />
+            </a>
+          </motion.div>
         </div>
-      </motion.section>
+      </section>
 
       {/* Contact */}
       <motion.section
