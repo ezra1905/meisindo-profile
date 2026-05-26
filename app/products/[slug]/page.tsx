@@ -105,8 +105,20 @@ const wineData: Record<string, WineCollection> = {
         image: "/wines/mcperson.png",
         description: "Structured wine with elegant tannins and oak finish.",
       },
+      {
+        name: "McPherson",
+        image: "/wines/mcperson.png",
+        description: "Structured wine with elegant tannins and oak finish.",
+      },{
+        name: "McPherson",
+        image: "/wines/mcperson.png",
+        description: "Structured wine with elegant tannins and oak finish.",
+      },
     ],
-  },
+  }, 
+  
+
+  
 
   spain: {
     title: "Spanish Wine Collection",
