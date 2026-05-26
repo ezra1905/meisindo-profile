@@ -1,5 +1,6 @@
 "use client";
 
+import FloatingContact from "./components/FloatingContact";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -786,15 +787,8 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* Floating WA */}
-      <a
-        href="https://wa.me/6285157815688"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-5 right-5 z-50 animate-pulse rounded-full bg-[#ed6a17] p-4 sm:p-5 text-[#03143f] shadow-[0_0_50px_rgba(237,106,23,0.6)] transition hover:scale-110"
-      >
-        <Phone />
-      </a>
+      {/* Floating Contact Button */}
+      <FloatingContact />
 
       <footer className="border-t border-white/10 bg-[#020b26]/40 px-6 py-14">
         <div className="mx-auto grid max-w-7xl gap-10 sm:grid-cols-2 lg:grid-cols-4">
