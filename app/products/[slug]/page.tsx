@@ -2,6 +2,7 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 import Image from "next/image";
 import Link from "next/link";
+import { MessageCircle } from "lucide-react";
 
 type Wine = {
   name: string;
@@ -182,7 +183,7 @@ export default async function ProductPage({
               key={wine.name}
               className="group flex min-w-0 flex-col overflow-hidden border border-gray-100 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
             >
-              <div className="relative aspect-[4/3] overflow-hidden sm:aspect-[3/4] lg:aspect-[4/5]">
+              <div className="relative aspect-4/3 overflow-hidden sm:aspect-3/4 lg:aspect-4/5">
                 <Image
                   src={getWineImage(wine.image)}
                   alt={wine.name}
@@ -199,9 +200,19 @@ export default async function ProductPage({
                   {wine.name}
                 </h2>
 
-                <p className="text-sm leading-relaxed text-gray-600 sm:text-base">
+                <p className="mb-4 flex-1 text-sm leading-relaxed text-gray-600 sm:text-base">
                   {wine.description}
                 </p>
+
+                <a
+                  href={`https://wa.me/6285157815688?text=${encodeURIComponent(`Halo Meisindo, saya tertarik dengan ${wine.name}`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto inline-flex items-center justify-center gap-2 rounded-lg bg-green-500 px-4 py-3 text-sm font-semibold text-white transition-all hover:bg-green-600"
+                >
+                  <MessageCircle size={18} />
+                  Message Us
+                </a>
               </div>
             </div>
           ))}
