@@ -5,10 +5,31 @@ import { connection } from "next/server";
 import { Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 import { fallbackNewsImage, getPublishedNews } from "@/lib/news";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
-  title: "News | Meisindo Karya Semesta",
+  title: "Wine News & Updates | Meisindo Karya Semesta",
   description:
-    "Latest news, portfolio updates, and partner support from Meisindo Karya Semesta.",
+    "Latest wine news, portfolio updates, and partner support from Meisindo Karya Semesta. Stay updated with the latest from our wine collections.",
+  keywords: ["wine news", "wine updates", "Meisindo news", "wine distributor Indonesia", "hospitality wine"],
+  openGraph: {
+    title: "Wine News & Updates | Meisindo Karya Semesta",
+    description:
+      "Latest wine news, portfolio updates, and partner support from Meisindo Karya Semesta.",
+    type: "website",
+    locale: "en_US",
+    siteName: "Meisindo Karya Semesta",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Wine News & Updates | Meisindo Karya Semesta",
+    description:
+      "Latest wine news, portfolio updates, and partner support from Meisindo Karya Semesta.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 const dateFormatter = new Intl.DateTimeFormat("en", {

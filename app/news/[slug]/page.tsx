@@ -1,9 +1,56 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
 import { Calendar, ChevronLeft } from "lucide-react";
 import { fallbackNewsImage, getNewsBySlug } from "@/lib/news";
+
+export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const article = await getNewsBySlug(slug);
+
+  if (!article || article.status !== "published") {
+    return {
+      title: "Article Not Found | Meisindo Karya Semesta",
+    };
+  }
+
+  return {
+    title: `${article.title} | Meisindo Wine News`,
+    description: article.excerpt,
+    keywords: [article.category, "wine news", "Meisindo", "wine updates"],
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      type: "article",
+      publishedTime: article.publishedAt,
+      modifiedTime: article.updatedAt || article.publishedAt,
+      authors: ["Meisindo Karya Semesta"],
+      images: [
+        {
+          url: article.image || fallbackNewsImage,
+          alt: article.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.excerpt,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 const dateFormatter = new Intl.DateTimeFormat("en", {
   day: "2-digit",
