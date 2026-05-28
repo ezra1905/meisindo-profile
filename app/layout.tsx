@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cinzel, Inter } from "next/font/google";
 import "./globals.css";
+import AgeVerification from "./components/AgeVerification";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -29,7 +30,9 @@ export default function RootLayout({
   suppressHydrationWarning
       className={`${cinzel.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <AgeVerification />
+        {children}</body>
     </html>
   );
 }
