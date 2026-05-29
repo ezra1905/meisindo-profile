@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cinzel, Inter } from "next/font/google";
 import "./globals.css";
 import AgeVerification from "./components/AgeVerification";
+import CursorTrail from "./components/CursorTrail";
 import { generateJsonLd } from "@/lib/seo";
 
 const cinzel = Cinzel({
@@ -58,6 +59,7 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: jsonLd }}
         />
         <AgeVerification />
+        <CursorTrail />
         {children}</body>
     </html>
   );
