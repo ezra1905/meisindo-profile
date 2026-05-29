@@ -4,6 +4,7 @@ import Link from "next/link";
 import { connection } from "next/server";
 import { Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 import { fallbackNewsImage, getPublishedNews } from "@/lib/news";
+import { generateNewsJsonLd, generateBreadcrumbJsonLd } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
@@ -47,9 +48,25 @@ export default async function NewsPage() {
   await connection();
 
   const news = await getPublishedNews();
+  const newsJsonLd = await generateNewsJsonLd() || "";
+  const breadcrumbJsonLd = await generateBreadcrumbJsonLd([
+    { name: "Home", url: "https://www.meisindobali.com" },
+    { name: "News", url: "https://www.meisindobali.com/news" },
+  ]);
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-white px-4 pb-16 pt-20 text-[#03143f] sm:px-6 sm:pb-24 sm:pt-24 lg:px-8">
+    <>
+      {newsJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: newsJsonLd }}
+        />
+      )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd }}
+      />
+      <main className="min-h-screen overflow-x-hidden bg-white px-4 pb-16 pt-20 text-[#03143f] sm:px-6 sm:pb-24 sm:pt-24 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <Link
           href="/"
@@ -125,5 +142,6 @@ export default async function NewsPage() {
         )}
       </div>
     </main>
+    </>
   );
 }

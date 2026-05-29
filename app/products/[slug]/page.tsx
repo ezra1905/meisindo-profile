@@ -243,10 +243,14 @@ export async function generateMetadata({
     title: product.metaTitle,
     description: product.metaDescription,
     keywords: product.keywords,
+    alternates: {
+      canonical: `/products/${slug}`,
+    },
     openGraph: {
       title: product.metaTitle,
       description: product.metaDescription,
       type: "website",
+      url: `https://www.meisindobali.com/products/${slug}`,
     },
   };
 }
