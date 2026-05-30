@@ -475,11 +475,14 @@ export default function Home() {
                 <span className="h-8 w-1 bg-[#ed6a17]" />
                 Our Story
               </h3>
-              <p className="mb-6 text-base leading-relaxed text-gray-600">
-                Meisindo Karya Semesta is a premium wine distribution partner delivering professional service, extensive distribution networks, and a commitment to exceptional quality. We specialize in serving the hospitality industry with carefully curated wine selections from around the world.
+              <p className="mb-4 text-base leading-relaxed text-gray-600">
+                Meisindo Karya Semesta is a premium wine distributor based in Bali, serving the island's top hospitality and tourist areas including Canggu, Seminyak, Uluwatu, Ubud, Sanur, Jimbaran, Nusa Dua, and Kuta.
+              </p>
+              <p className="mb-4 text-base leading-relaxed text-gray-600">
+                We specialize in supplying luxury hotels, fine dining restaurants, and boutique bars with carefully curated premium wines from around the world.
               </p>
               <p className="text-base leading-relaxed text-gray-600">
-                Our partnerships with renowned wine producers ensure that our clients receive only the finest products, backed by expert knowledge and reliable delivery services across Indonesia.
+                Our partnerships with renowned wine producers ensure clients enjoy only the finest wines, supported by expert knowledge and reliable delivery across Bali's key hospitality destinations.
               </p>
             </motion.div>
 
